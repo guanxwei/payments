@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wgx.payments.dao.CheckbookItemDAO">
+    <select id="getListByTransactionID" resultType="org.wgx.payments.model.CheckbookItem">
+        select * from CheckbookItem where transactionID = #{transactionID}
+    </select>
+    <select id="list" resultType="org.wgx.payments.model.CheckbookItem">
+        select * from CheckbookItem where status = #{arg2} limit #{arg0} offset #{arg1}
+    </select>
+    <insert id="save">
+       insert into CheckbookItem (id,transactionID,status,business,referenceID,type,externalTransactionID,requestedAmount,acknowledgedAmount,recordTime,transactionTime,paymentMethod,uniqueKey) 
+       values (#{id},#{transactionID},#{status},#{business},#{referenceID},#{type},#{externalTransactionID},#{requestedAmount},#{acknowledgedAmount},#{recordTime},#{transactionTime},#{paymentMethod},#{uniqueKey})
+    </insert>
+    <select id="findByUniqueItem" resultType="org.wgx.payments.model.CheckbookItem">
+        select * from CheckbookItem where uniqueKey = #{uniqueKey}
+    </select>
+    <select id="getCheckbookItemsByRange" resultType="org.wgx.payments.model.CheckbookItem">
+        <![CDATA[
+        select * from CheckbookItem where transactionTime >= #{arg0} and transactionTime <= #{arg1}
+        ]]>
+    </select>
+</mapper>

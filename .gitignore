@@ -1,0 +1,15 @@
+target/
+classes/
+logs/
+javadoc/
+javadocs/
+.classpath
+*.log
+*/bin
+*.settings
+*.settings/*
+*.project
+*/test-output
+*/.project
+.idea/
+

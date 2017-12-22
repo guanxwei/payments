@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wgx.payments.dao.CheckOrderDiffDAO">
+    <insert id="save">
+       insert into CheckOrderDiffItem (id, transactionID, jobId, status, createTime, lastUpdateTime, referenceID, paymentMethod, operationType, acknowledgedAmount, business, customerID) 
+       values (#{id}, #{transactionID}, #{jobId}, #{status}, #{createTime}, #{lastUpdateTime}, #{referenceID}, #{paymentMethod}, #{operationType}, #{acknowledgedAmount}, #{business}, #{customerID})
+    </insert>
+    <select id="find" resultType="org.wgx.payments.model.CheckOrderDiffItem">
+        select * from CheckOrderDiffItem where id = #{arg0}
+    </select>
+    <select id="list" resultType="org.wgx.payments.model.CheckOrderDiffItem">
+        select * from CheckOrderDiffItem where status = #{arg2} limit #{arg0} offset #{arg1}
+    </select>
+    <update id="updateStatus">
+        update CheckOrderDiffItem set status = #{arg1} where id =  #{arg0}
+    </update>
+    <select id="count" resultType="java.lang.Integer">
+        select count(*) from CheckOrderDiffItem where status = #{arg0}
+    </select>
+</mapper>

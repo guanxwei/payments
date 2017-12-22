@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wgx.payments.dao.ActionRecordDAO">
+    <insert id="record">
+       insert into ActionRecord (id,transactionID,errorCode,message,time) values (#{id},#{transactionID},#{errorCode},#{message},#{time})
+    </insert>
+    <select id="queryByTransactionID" resultType="org.wgx.payments.model.ActionRecord">
+        select * from ActionRecord where transactionID = #{transactionID}
+    </select>
+</mapper>

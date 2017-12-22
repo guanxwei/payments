@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wgx.payments.dao.PaymentRequestDAO">
+    <insert id="save" parameterType="org.wgx.payments.model.PaymentRequest">
+        insert into PaymentRequest(id, transactionID, referenceID, status, channel, createTime, lastUpdateTime, requestedAmount, paymentMethod, parentID, customerID, url, paymentOperationType, callBackMetaInfo, business) 
+        values (#{id}, #{transactionID}, #{referenceID}, #{status}, #{channel}, #{createTime}, #{lastUpdateTime}, #{requestedAmount}, #{paymentMethod}, #{parentID}, #{customerID}, #{url}, #{paymentOperationType}, #{callBackMetaInfo}, #{business}) 
+    </insert>
+    <update id="update" parameterType="org.wgx.payments.model.PaymentRequest">
+        update PaymentRequest set status = #{status}, lastUpdateTime = #{lastUpdateTime} where id = #{id} 
+    </update>
+    <select id="getPaymentRequestByReferenceIDAndBusinessName" resultType="org.wgx.payments.model.PaymentRequest">
+        select * from PaymentRequest where referenceID = #{arg0} and business = #{arg1}
+    </select>
+    <select id="getPaymentRequestByTransactionID" resultType="org.wgx.payments.model.PaymentRequest">
+        select * from PaymentRequest where transactionID = #{arg0}
+    </select>
+    <select id="getPaymentRequestsByParentID" resultType="org.wgx.payments.model.PaymentRequest">
+        select * from PaymentRequest where parentID = #{arg0}
+    </select>
+    <select id="getPendingPaymentRequestList" resultType="org.wgx.payments.model.PaymentRequest">
+        select * from PaymentRequest where status = #{arg0} and paymentMethod = #{arg1} and paymentOperationType = #{arg2} offset 0 limit #{arg3}
+    </select>
+</mapper>

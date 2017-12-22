@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wgx.payments.dao.PaymentAccountDAO">
+    <insert id="save">
+        insert into PaymentAccount(id, accountName, accountNo, paymentMethod) values(#{id}, #{accountName}, #{accountNo}, #{paymentMethod})
+    </insert>
+    <update id="edit" parameterType="org.wgx.payments.account.impl.meta.PaymentAccount">
+        update PaymentAccount set accountName = #{accountName}, accountNo = #{accountNo}, paymentMethod = #{paymentMethod} where id = #{id}
+    </update>
+    <select id="getAccountNameCount" resultType="java.lang.Integer">
+        select count (*) from PaymentAccount where accountName = #{arg0}
+    </select>
+    <select id="query" resultType="org.wgx.payments.account.impl.meta.PaymentAccount">
+        select * from PaymentAccount where accountName like #{arg0}
+    </select>
+    <select id="getByPaymentMethod" resultType="org.wgx.payments.account.impl.meta.PaymentAccount">
+        select * from PaymentAccount where paymentMethod = #{arg0}
+    </select>
+    <select id="get" resultType="org.wgx.payments.account.impl.meta.PaymentAccount">
+        select * from PaymentAccount where id = #{arg0}
+    </select>
+</mapper>
