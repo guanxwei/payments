@@ -1,7 +1,7 @@
 Generic Payments Module written by Java.
 
 1 Description
-	This is generic payments module that can be integrated with any other systems that need one standalone module to help
+	This is generic payments module that can be integrated with any other systems that need one standalone module to complete
 payments related stuff.
 	Use Alipay, Wechat and IAP as samples. For detail, please refer to the documents published by these companies.
 
