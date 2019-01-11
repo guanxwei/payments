@@ -117,5 +117,12 @@
         <artifactId>commons-beanutils</artifactId>
         <version>1.9.3</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/io.github.guanxwei/fast-stream -->
+    <dependency>
+        <groupId>io.github.guanxwei</groupId>
+        <artifactId>fast-stream</artifactId>
+        <version>1.0.1</version>
+    </dependency>
+
   </dependencies>
 </project>

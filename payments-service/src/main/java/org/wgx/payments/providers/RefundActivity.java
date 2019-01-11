@@ -1,4 +1,4 @@
-package org.wgx.payments.service;
+package org.wgx.payments.providers;
 
 import java.sql.Timestamp;
 
