@@ -16,12 +16,6 @@ public enum PaymentMethod {
     WECHAT("Wechat", 80),
 
     /**
-     * Payment method Netease.
-     */
-    @Deprecated
-    NETEASE("Netease", 90),
-
-    /**
      * Payment method IAP. For reference, please check here: https://support.apple.com/en-us/HT202023.
      */
     IAP("IAP", 60),
@@ -32,7 +26,7 @@ public enum PaymentMethod {
     POINTS("Points", 40),
 
     /**
-     * Payment method accounts(零钱支付,用户的零钱将统一记账在云音乐电子账户里).
+     * Payment method accounts
      */
     ACCOUNTS("Accounts", 30),
 

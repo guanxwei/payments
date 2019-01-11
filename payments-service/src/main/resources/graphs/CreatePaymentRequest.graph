@@ -1,0 +1,17 @@
+{
+  "graphName":"CreatePaymentRequest",
+  "resourceType":"OBJECT",
+  "startNode":"initiateResponseNode",
+  "defaultErrorNode":"printResponseNode",
+  "nodes":[
+    {
+      "nodeName":"initiateResponseNode",
+      "activityClass":"org.wgx.payments.stream.activities.create.InitiateResponseActivity",
+      "successNode":"parseProductInfoNode"
+    },
+    {
+      "nodeName":"printResponseNode",
+      "activityClass":"org.wgx.payments.stream.activities.create.PrintResponseActivity"
+    }
+  ]
+}

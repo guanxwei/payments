@@ -58,7 +58,7 @@ public class CreatePaymentRequestActivity implements Activity<CreatePaymentReque
     }
 
     private boolean validateBasicInfo(final CreatePaymentRequest request) {
-        if (request.getPaymentMethodName() == null || request.getPaymentMethodName().size() < 1) {
+        if (request.getPaymentMethod() == null || request.getPaymentMethod().size() < 1) {
             log.error("Payment method list can not be empty, something wrong happened. Request : [{}]", request);
             return false;
         }

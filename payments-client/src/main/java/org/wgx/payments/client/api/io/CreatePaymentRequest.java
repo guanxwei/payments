@@ -36,6 +36,6 @@ public class CreatePaymentRequest extends Request implements Serializable {
      * To support cases like paying the order via Alipay & GiftCard, the clients should provide both these payment method code.
      * Now multi-tender cases are not supported.
      */
-    private List<String> paymentMethodName;
+    private List<Integer> paymentMethod;
 
 }
