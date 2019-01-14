@@ -9,6 +9,7 @@ import org.stream.core.component.ActivityResult;
 import org.stream.core.execution.WorkFlowContext;
 import org.stream.core.resource.Resource;
 import org.wgx.payments.client.api.helper.PaymentMethod;
+import org.wgx.payments.exception.PaymentsException;
 import org.wgx.payments.stream.config.WellknownResourceReferences;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +33,12 @@ public class ParseInternalPaymentMethodActivity extends Activity {
         Resource resource = WorkFlowContext.resolveResource(WellknownResourceReferences.PAYMENT_METHOD_LIST);
         @SuppressWarnings("unchecked")
         List<PaymentMethod> paymentMethods = resource.resolveValue(List.class);
+        long count = paymentMethods.parallelStream()
+                .filter(PaymentMethod::isInternal)
+                .count();
+        if (count > 1L) {
+            throw new PaymentsException(400, "Request not supported, more then two kinds of internal payment methods are presented.");
+        }
         Optional<PaymentMethod> internalPaymentMethodOption = paymentMethods.parallelStream()
                 .filter(PaymentMethod::isInternal)
                 .findFirst();

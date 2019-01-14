@@ -26,7 +26,7 @@ public class PaymentResponse {
     private String operationType;
     private String acknowledgedAmount;
     private String business;
-    private String customerID;
+    private long customerID;
     // CHECKSTYLE:ON
 
 }

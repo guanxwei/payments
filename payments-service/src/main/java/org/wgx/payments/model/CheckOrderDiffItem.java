@@ -22,5 +22,5 @@ public class CheckOrderDiffItem {
     private String operationType;
     private String acknowledgedAmount;
     private String business;
-    private String customerID;
+    private long customerID;
 }

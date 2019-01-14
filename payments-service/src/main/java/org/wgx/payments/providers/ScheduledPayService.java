@@ -78,7 +78,7 @@ public class ScheduledPayService implements Service<ScheduledPayRequest, Schedul
     }
 
     private boolean checkBasicInfo(final ScheduledPayRequest request) {
-        if (StringUtils.isEmpty(request.getCustomerID())) {
+        if (request.getCustomerID() <= 0) {
             log.warn("Customer id can not be empty.");
             return false;
         }

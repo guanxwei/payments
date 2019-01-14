@@ -27,7 +27,7 @@ public class Request {
     /**
      * Customer unique identifier.
      */
-    private String customerID;
+    private long customerID;
 
     /**
      * Client channel representation, like WAP, APP, PC, etc.

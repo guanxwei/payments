@@ -21,7 +21,7 @@ public class PaymentRequestBuilder {
     private String requestedAmount;
     private String paymentMethod;
     private String parentID;
-    private String customerID;
+    private long customerID;
     private String url;
     private String paymentOperationType;
     private String callBackMetaInfo;
@@ -105,7 +105,7 @@ public class PaymentRequestBuilder {
         return this;
     }
 
-    public PaymentRequestBuilder customerID(final String customerID) {
+    public PaymentRequestBuilder customerID(final long customerID) {
         this.customerID = customerID;
         return this;
     }

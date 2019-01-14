@@ -24,7 +24,7 @@ public class PaymentRequest implements Serializable {
     private String requestedAmount;
     private String paymentMethod;
     private String parentID;
-    private String customerID;
+    private long customerID;
     private String url;
     private String paymentOperationType;
     private String callBackMetaInfo;

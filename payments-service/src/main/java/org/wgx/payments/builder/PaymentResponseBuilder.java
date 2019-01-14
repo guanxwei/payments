@@ -21,7 +21,7 @@ public class PaymentResponseBuilder {
     private String paymentMethod;
     private String operationType;
     private String business;
-    private String customerID;
+    private long customerID;
     private String acknowledgedAmount;
     // CHECKSTYLE:ON
 
@@ -55,62 +55,62 @@ public class PaymentResponseBuilder {
     }
 
     // CHECKSTYLE:OFF
-    public PaymentResponseBuilder externalTransactionID(String externalTransactionID) {
+    public PaymentResponseBuilder externalTransactionID(final String externalTransactionID) {
         this.externalTransactionID = externalTransactionID;
         return this;
     }
 
-    public PaymentResponseBuilder transactionID(String transactionID) {
+    public PaymentResponseBuilder transactionID(final String transactionID) {
         this.transactionID = transactionID;
         return this;
     }
 
-    public PaymentResponseBuilder status(int status) {
+    public PaymentResponseBuilder status(final int status) {
         this.status = status;
         return this;
     }
 
-    public PaymentResponseBuilder rawResponse(String rawResponse) {
+    public PaymentResponseBuilder rawResponse(final String rawResponse) {
         this.rawResponse = rawResponse;
         return this;
     }
 
-    public PaymentResponseBuilder createTime(Timestamp createTime) {
+    public PaymentResponseBuilder createTime(final Timestamp createTime) {
         this.createTime = createTime;
         return this;
     }
 
-    public PaymentResponseBuilder referenceID(String referenceID) {
+    public PaymentResponseBuilder referenceID(final String referenceID) {
         this.referenceID = referenceID;
         return this;
     }
 
-    public PaymentResponseBuilder paymentMethod(String paymentMethod) {
+    public PaymentResponseBuilder paymentMethod(final String paymentMethod) {
         this.paymentMethod = paymentMethod;
         return this;
     }
 
-    public PaymentResponseBuilder lastUpdateTime(Timestamp lastUpdateTime) {
+    public PaymentResponseBuilder lastUpdateTime(final Timestamp lastUpdateTime) {
         this.lastUpdateTime = lastUpdateTime;
         return this;
     }
 
-    public PaymentResponseBuilder operationType(String operationType) {
+    public PaymentResponseBuilder operationType(final String operationType) {
         this.operationType = operationType;
         return this;
     }
 
-    public PaymentResponseBuilder business(String business) {
+    public PaymentResponseBuilder business(final String business) {
         this.business = business;
         return this;
     }
 
-    public PaymentResponseBuilder customerID(String customerID) {
+    public PaymentResponseBuilder customerID(final long customerID) {
         this.customerID = customerID;
         return this;
     }
 
-    public PaymentResponseBuilder acknowledgedAmount(String acknowledgedAmount) {
+    public PaymentResponseBuilder acknowledgedAmount(final String acknowledgedAmount) {
         this.acknowledgedAmount = acknowledgedAmount;
         return this;
     }

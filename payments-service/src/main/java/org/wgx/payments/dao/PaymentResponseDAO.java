@@ -44,7 +44,7 @@ public interface PaymentResponseDAO {
      * @param operationType Operation type.
      * @return Payment response list.
      */
-    List<PaymentResponse> getPaymentResponseListByCustomerIDAndOperationType(final String customerID,
+    List<PaymentResponse> getPaymentResponseListByCustomerIDAndOperationType(final long customerID,
             final String operationType);
 
     /**
