@@ -8,40 +8,44 @@ public enum PaymentMethod {
     /**
      * Payment method Alipay.
      */
-    ALIPAY("Alipay", 70),
+    ALIPAY("Alipay", 70, false),
 
     /**
      * Payment method Wechat.
      */
-    WECHAT("Wechat", 80),
+    WECHAT("Wechat", 80, false),
 
     /**
      * Payment method IAP. For reference, please check here: https://support.apple.com/en-us/HT202023.
      */
-    IAP("IAP", 60),
+    IAP("IAP", 60, false),
 
     /**
      * Payment method points.
      */
-    POINTS("Points", 40),
+    POINTS("Points", 40, true),
 
     /**
      * Payment method accounts
      */
-    ACCOUNTS("Accounts", 30),
+    ACCOUNTS("Accounts", 30, true),
 
     /**
      * Payment method Gift card.
      */
-    GIFT_CARD("GC", 50);
+    GIFT_CARD("GC", 50, true);
 
     // CHECKSTYLE:OFF
     private String paymentMethodName;
     private int paymentMethodCode;
+    // 是否是平台内部支付方式，一个内部支付方式可以和一个非内部支付方式一起联合支付，其他任何情况不允许多种支付方式支付一笔请求.
+    private boolean internal;
 
-    private PaymentMethod(final String paymentMethodName, final int paymentMethodCode) {
+    private PaymentMethod(final String paymentMethodName, final int paymentMethodCode,
+            final boolean internal) {
         this.paymentMethodName = paymentMethodName;
         this.paymentMethodCode = paymentMethodCode;
+        this.internal = internal;
     }
 
     public String paymentMethodName() {
@@ -50,6 +54,10 @@ public enum PaymentMethod {
 
     public int paymentMethodCode() {
         return this.paymentMethodCode;
+    }
+
+    public boolean isInternal() {
+        return this.internal;
     }
 
     public static PaymentMethod fromCode(final int paymentMethodCode) {

@@ -7,35 +7,35 @@ import java.util.HashMap;
  *
  */
 
-public class JsonObject extends HashMap<String, Object>{
+public class JsonObject extends HashMap<String, Object> {
     private static final long serialVersionUID = 8214023544330782528L;
 
-    public static JsonObject start(){
+    public static JsonObject start() {
         return new JsonObject();
     }
 
-    public <T> JsonObject data(T value){
+    public <T> JsonObject data(final T value) {
         this.put("data", value);
         return this;
     }
 
-    public JsonObject code(int code){
+    public JsonObject code(final int code) {
         this.put("code", code);
         return this;
     }
 
-    public JsonObject code(String code){
+    public JsonObject code(final String code) {
         this.put("code", code);
         return this;
     }
 
 
-    public JsonObject msg(String message){
+    public JsonObject msg(final String message) {
         this.put("msg", message);
         return this;
     }
 
-    public JsonObject append(String key, Object value){
+    public JsonObject append(final String key, final Object value) {
         this.put(key, value);
         return this;
     }
