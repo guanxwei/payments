@@ -3,7 +3,7 @@ package org.wgx.payments.providers;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
-import org.wgx.payments.client.api.Activity;
+import org.wgx.payments.client.api.Service;
 import org.wgx.payments.client.api.helper.PaymentOperation;
 import org.wgx.payments.client.api.helper.ResponseStatus;
 import org.wgx.payments.client.api.io.CreateOrUpdatePaymentResponseRequest;
@@ -20,8 +20,8 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Component(value = "createOrUpdatePaymentResponseService")
 @Slf4j
-public class CreateOrUpdatePaymentResponseActivity implements
-    Activity<CreateOrUpdatePaymentResponseRequest, CreateOrUpdatePaymentResponseResponse> {
+public class CreateOrUpdatePaymentResponseService implements
+    Service<CreateOrUpdatePaymentResponseRequest, CreateOrUpdatePaymentResponseResponse> {
 
     @Resource @Setter
     private PaymentProcessorManager paymentProcessorManager;

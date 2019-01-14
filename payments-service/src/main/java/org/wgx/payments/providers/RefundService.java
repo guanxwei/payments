@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
 import org.wgx.payments.builder.FastSearchTableItemBuilder;
-import org.wgx.payments.client.api.Activity;
+import org.wgx.payments.client.api.Service;
 import org.wgx.payments.client.api.helper.BusinessProfile;
 import org.wgx.payments.client.api.helper.PaymentOperation;
 import org.wgx.payments.client.api.helper.PaymentResponseStatus;
@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Component(value = "refundService")
-public class RefundActivity implements Activity<RefundRequest, RefundResponse> {
+public class RefundService implements Service<RefundRequest, RefundResponse> {
 
     @Resource @Setter
     private PaymentResponseDAO paymentResponseDAO;

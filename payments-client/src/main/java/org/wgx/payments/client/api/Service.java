@@ -7,7 +7,7 @@ package org.wgx.payments.client.api;
  * @param <U> output response.
  */
 @FunctionalInterface
-public interface Activity<T, U> {
+public interface Service<T, U> {
 
     /**
      * Entrance of payments services.

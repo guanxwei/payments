@@ -6,24 +6,14 @@ package org.wgx.payments.client.api.helper;
 public enum PaymentMethod {
 
     /**
-     * Payment method Alipay.
+     * Payment method credit card.
      */
-    ALIPAY("Alipay", 70, false),
+    CREDIT_CARD("CreditCard", 10, false),
 
     /**
-     * Payment method Wechat.
+     * Payment method credit card.
      */
-    WECHAT("Wechat", 80, false),
-
-    /**
-     * Payment method IAP. For reference, please check here: https://support.apple.com/en-us/HT202023.
-     */
-    IAP("IAP", 60, false),
-
-    /**
-     * Payment method points.
-     */
-    POINTS("Points", 40, true),
+    DEBIT_CARD("DebitCard", 20, false),
 
     /**
      * Payment method accounts
@@ -31,9 +21,29 @@ public enum PaymentMethod {
     ACCOUNTS("Accounts", 30, true),
 
     /**
+     * Payment method points.
+     */
+    POINTS("Points", 40, true),
+
+    /**
      * Payment method Gift card.
      */
-    GIFT_CARD("GC", 50, true);
+    GIFT_CARD("GC", 50, true),
+
+    /**
+     * Payment method IAP. For reference, please check here: https://support.apple.com/en-us/HT202023.
+     */
+    IAP("IAP", 60, false),
+
+    /**
+     * Payment method Alipay.
+     */
+    ALIPAY("Alipay", 70, false),
+
+    /**
+     * Payment method Wechat.
+     */
+    WECHAT("Wechat", 80, false);
 
     // CHECKSTYLE:OFF
     private String paymentMethodName;

@@ -3,7 +3,7 @@ package org.wgx.payments.providers;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
-import org.wgx.payments.client.api.Activity;
+import org.wgx.payments.client.api.Service;
 import org.wgx.payments.client.api.helper.BusinessProfile;
 import org.wgx.payments.client.api.helper.PaymentOperation;
 import org.wgx.payments.client.api.helper.PaymentResponseStatus;
@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Component(value = "rescindService")
 @Slf4j
-public class RescindActivity implements Activity<RescindRequest, RescindResponse> {
+public class RescindService implements Service<RescindRequest, RescindResponse> {
 
     @Resource @Setter
     private PaymentRequestDAO paymentRequestDAO;

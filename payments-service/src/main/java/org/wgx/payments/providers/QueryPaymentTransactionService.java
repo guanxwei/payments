@@ -4,7 +4,7 @@ import javax.annotation.Resource;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
-import org.wgx.payments.client.api.Activity;
+import org.wgx.payments.client.api.Service;
 import org.wgx.payments.client.api.helper.BusinessProfile;
 import org.wgx.payments.client.api.helper.PaymentResponseStatus;
 import org.wgx.payments.client.api.helper.ResponseStatus;
@@ -27,8 +27,8 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Component(value = "queryPaymentTransactionService")
 @Slf4j
-public class QueryPaymentTransactionActivity implements
-    Activity<QueryPaymentTransactionRequest, QueryPaymentTransactionResponse> {
+public class QueryPaymentTransactionService implements
+        Service<QueryPaymentTransactionRequest, QueryPaymentTransactionResponse> {
 
     @Resource @Setter
     private PaymentRequestDAO paymentRequestDAO;

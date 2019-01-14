@@ -9,7 +9,7 @@ import org.stream.core.execution.GraphContext;
 import org.stream.core.execution.WorkFlowContext;
 import org.stream.core.resource.ResourceTank;
 import org.stream.core.resource.ResourceType;
-import org.wgx.payments.client.api.Activity;
+import org.wgx.payments.client.api.Service;
 import org.wgx.payments.client.api.helper.ResponseStatus;
 import org.wgx.payments.client.api.io.CreatePaymentRequest;
 import org.wgx.payments.client.api.io.CreatePaymentResponse;
@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Component(value = "createPaymentRequestService")
 @Slf4j
-public class CreatePaymentRequestActivity implements Activity<CreatePaymentRequest, CreatePaymentResponse> {
+public class CreatePaymentRequestService implements Service<CreatePaymentRequest, CreatePaymentResponse> {
 
     private static final String CREATE_PAYMENTS_REQUEST_REFERENCE = "Create::Payments::Request::Reference";
 

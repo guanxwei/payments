@@ -12,6 +12,7 @@ import org.stream.core.execution.WorkFlowContext;
 import org.stream.core.resource.Resource;
 import org.wgx.payments.client.api.helper.PaymentMethod;
 import org.wgx.payments.client.api.io.CreatePaymentRequest;
+import org.wgx.payments.stream.config.WellknownResourceReferences;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,6 +44,12 @@ public class ParsePaymentMethodListActivity extends Activity {
             log.info("Payment [{}] added to the processing list", paymentMethod.paymentMethodName());
         });
 
+        Resource resource = Resource.builder()
+                .resourceReference(WellknownResourceReferences.PAYMENT_METHOD_LIST)
+                .value(paymentMethods)
+                .build();
+
+        WorkFlowContext.attachResource(resource);
         return ActivityResult.SUCCESS;
     }
 

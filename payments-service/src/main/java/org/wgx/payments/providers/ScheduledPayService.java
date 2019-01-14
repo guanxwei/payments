@@ -4,7 +4,7 @@ import javax.annotation.Resource;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
-import org.wgx.payments.client.api.Activity;
+import org.wgx.payments.client.api.Service;
 import org.wgx.payments.client.api.helper.BusinessProfile;
 import org.wgx.payments.client.api.helper.PaymentOperation;
 import org.wgx.payments.client.api.helper.ResponseStatus;
@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Component(value = "scheduledPayService")
-public class ScheduledPayActivity implements Activity<ScheduledPayRequest, ScheduledPayResponse> {
+public class ScheduledPayService implements Service<ScheduledPayRequest, ScheduledPayResponse> {
 
     @Resource @Setter
     private PaymentProcessorManager paymentProcessorManager;
