@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.wgx.payments.client.api.Activity;
+import org.wgx.payments.client.api.Service;
 import org.wgx.payments.client.api.helper.PaymentMethod;
 import org.wgx.payments.client.api.helper.PaymentOperation;
 import org.wgx.payments.client.api.io.CreateOrUpdatePaymentResponseRequest;
@@ -48,7 +48,7 @@ public class NotifyURLController {
     private PaymentProcessorManager paymentProcessorManager;
 
     @Resource(name = "createOrUpdatePaymentResponseService")
-    private Activity<CreateOrUpdatePaymentResponseRequest, CreateOrUpdatePaymentResponseResponse> activity;
+    private Service<CreateOrUpdatePaymentResponseRequest, CreateOrUpdatePaymentResponseResponse> activity;
 
     /**
      * Payments platform's call back handler.

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.wgx.payments.builder.ActionRecordBuilder;
 import org.wgx.payments.builder.PaymentResponseBuilder;
-import org.wgx.payments.client.api.Activity;
+import org.wgx.payments.client.api.Service;
 import org.wgx.payments.client.api.helper.PaymentOperation;
 import org.wgx.payments.client.api.helper.PaymentResponseStatus;
 import org.wgx.payments.client.api.helper.ResponseStatus;
@@ -69,7 +69,7 @@ public class CheckbookController {
 
     @Resource(name = "paymentsRefundService")
     @Setter
-    private Activity<RefundRequest, RefundResponse> paymentsRefundService;
+    private Service<RefundRequest, RefundResponse> paymentsRefundService;
 
     @Value(value = "${refund.callback}")
     private String refundCallback;

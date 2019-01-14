@@ -5,7 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.wgx.payments.client.api.Activity;
+import org.wgx.payments.client.api.Service;
 import org.wgx.payments.client.api.helper.PaymentOperation;
 import org.wgx.payments.client.api.io.RefundRequest;
 import org.wgx.payments.client.api.io.RefundResponse;
@@ -29,7 +29,7 @@ public class BackfillRefundController {
 
     @Resource(name = "paymentsRefundService")
     @Setter
-    private Activity<RefundRequest, RefundResponse> paymentsRefundService;
+    private Service<RefundRequest, RefundResponse> paymentsRefundService;
 
     @Resource(name = "paymentResponseDAO")
     private PaymentResponseDAO paymentResponseDAO;
