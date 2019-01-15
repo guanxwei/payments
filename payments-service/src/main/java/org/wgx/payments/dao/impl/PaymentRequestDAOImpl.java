@@ -10,11 +10,14 @@ import org.wgx.payments.model.PaymentRequest;
  */
 public class PaymentRequestDAOImpl extends BaseFrameWorkDao implements PaymentRequestDAO {
 
+    private static final String TABLE = "PaymentRequest";
+
     /**
      * {@inheritDoc}
      */
     @Override
     public int save(final PaymentRequest paymentRequest) {
+        paymentRequest.setId(allocatedID(TABLE));
         return process(() -> getMapper(PaymentRequestDAO.class).save(paymentRequest));
     }
 

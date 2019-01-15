@@ -18,4 +18,9 @@ public final class WellknownResourceReferences {
      * A reference to internal payment method.
      */
     public static final String INTERNAL_PAYMENT_METHOD = "Internal::Payment::Method";
+
+    /**
+     * A reference to the new initiated payment request.
+     */
+    public static final String PAYMENT_REQUEST = "Payment::Request";
 }

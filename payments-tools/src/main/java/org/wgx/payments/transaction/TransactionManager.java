@@ -36,4 +36,11 @@ public interface TransactionManager extends DataSource {
      * Rollback the operations.
      */
     public void rollback();
+
+    /**
+     * Allocate new id for the specific table.
+     * @param table Table name.
+     * @return New allocated id.
+     */
+    long allocateID(final String table);
 }

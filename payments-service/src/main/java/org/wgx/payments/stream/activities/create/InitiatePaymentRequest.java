@@ -12,18 +12,25 @@ import org.wgx.payments.client.api.io.CreatePaymentRequest;
 import org.wgx.payments.dao.PaymentRequestDAO;
 import org.wgx.payments.model.PaymentRequest;
 import org.wgx.payments.model.PaymentRequestStatus;
+import org.wgx.payments.stream.config.WellknownResourceReferences;
 import org.wgx.payments.utils.AmountUtils;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Activity used to initiate payment request.
  * @author weigu
  *
  */
+@Slf4j
 public class InitiatePaymentRequest extends Activity {
 
     @javax.annotation.Resource
     private PaymentRequestDAO paymentRequestDAO;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ActivityResult act() {
         Resource primary = WorkFlowContext.getPrimary();
@@ -43,6 +50,12 @@ public class InitiatePaymentRequest extends Activity {
                 .build();
 
         paymentRequestDAO.save(paymentRequest);
+        Resource resource = Resource.builder()
+                .resourceReference(WellknownResourceReferences.PAYMENT_REQUEST)
+                .value(paymentRequest)
+                .build();
+        WorkFlowContext.attachResource(resource);
+        log.info("Payment request [{}] initiated", Jackson.json(paymentRequest));
         return ActivityResult.SUCCESS;
     }
 

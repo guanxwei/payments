@@ -14,6 +14,11 @@ import lombok.Setter;
 public abstract class BaseFrameWorkDao extends SqlSessionDaoSupport {
 
     private SqlSessionFactory sqlSessionFactory;
+
+    protected long allocatedID(final String table) {
+        return transactionManager.allocateID(table);
+    }
+
     @Setter @Autowired
     private TransactionManager transactionManager;
 
@@ -49,4 +54,5 @@ public abstract class BaseFrameWorkDao extends SqlSessionDaoSupport {
             transactionManager.releaseConnection();
         }
     }
+
 }
