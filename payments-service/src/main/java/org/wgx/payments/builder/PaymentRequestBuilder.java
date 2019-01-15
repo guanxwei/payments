@@ -12,17 +12,14 @@ import org.wgx.payments.model.PaymentRequest;
 public class PaymentRequestBuilder {
 
     // CHECKSTYLE:OFF
-    private String transactionID;
-    private String referenceID;
+    private String referenceIDList;
     private int status;
     private String channel;
     private Timestamp createTime;
     private Timestamp lastUpdateTime;
     private String requestedAmount;
-    private String paymentMethod;
-    private String parentID;
+    private String paymentMethodList;
     private long customerID;
-    private String url;
     private String paymentOperationType;
     private String callBackMetaInfo;
     private String business;
@@ -44,15 +41,12 @@ public class PaymentRequestBuilder {
         PaymentRequest result = new PaymentRequest();
         result.setChannel(channel);
         result.setCustomerID(customerID);
-        result.setTransactionID(transactionID);
-        result.setReferenceID(referenceID);
+        result.setReferenceIDList(referenceIDList);
         result.setStatus(status);
         result.setCreateTime(createTime);
         result.setLastUpdateTime(lastUpdateTime);
-        result.setParentID(parentID);
-        result.setPaymentMethod(paymentMethod);
+        result.setPaymentMethodList(paymentMethodList);
         result.setRequestedAmount(requestedAmount);
-        result.setUrl(url);
         result.setPaymentOperationType(paymentOperationType);
         result.setCallBackMetaInfo(callBackMetaInfo);
         result.setBusiness(business);
@@ -60,13 +54,9 @@ public class PaymentRequestBuilder {
     }
 
     // CHECKSTYLE:OFF
-    public PaymentRequestBuilder transactionID(final String transactionID) {
-        this.transactionID = transactionID;
-        return this;
-    }
 
-    public PaymentRequestBuilder referenceID(final String referenceID) {
-        this.referenceID = referenceID;
+    public PaymentRequestBuilder referenceIDList(final String referenceIDList) {
+        this.referenceIDList = referenceIDList;
         return this;
     }
 
@@ -95,23 +85,13 @@ public class PaymentRequestBuilder {
         return this;
     }
 
-    public PaymentRequestBuilder paymentMethod(final String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-        return this;
-    }
-
-    public PaymentRequestBuilder parentID(final String parentID) {
-        this.parentID = parentID;
+    public PaymentRequestBuilder paymentMethodList(final String paymentMethodList) {
+        this.paymentMethodList = paymentMethodList;
         return this;
     }
 
     public PaymentRequestBuilder customerID(final long customerID) {
         this.customerID = customerID;
-        return this;
-    }
-
-    public PaymentRequestBuilder url(final String url) {
-        this.url = url;
         return this;
     }
 

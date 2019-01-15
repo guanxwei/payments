@@ -18,15 +18,8 @@ import org.wgx.payments.dao.service.PaymentsDAOService;
 import org.wgx.payments.deducer.AccountDeducer;
 import org.wgx.payments.deducer.BusinessProfileDeducer;
 import org.wgx.payments.deducer.Deducer;
-import org.wgx.payments.deducer.WechatTradeTypeDeducer;
 import org.wgx.payments.facade.Facade;
-import org.wgx.payments.processors.AccountsProcessor;
-import org.wgx.payments.processors.AlipayProcessor;
-import org.wgx.payments.processors.IAPProcessor;
-import org.wgx.payments.processors.PointsProcessor;
-import org.wgx.payments.processors.WechatProcessor;
 import org.wgx.payments.signature.AccountFactory;
-import org.wgx.payments.signature.SignatureGenerator;
 import org.wgx.payments.validator.Validator;
 
 /**
@@ -82,76 +75,6 @@ public class PaymentProcessorConfig {
     }
 
     /**
-     * PaymentProcessorManager bean definition.
-     * @return PaymentProcessorManager instance.
-     */
-    @Bean(name = "paymentProcessorManager")
-    public PaymentProcessorManager paymentProcessorManager() {
-        PaymentProcessorManager paymentProcessorManager = new PaymentProcessorManager();
-        paymentProcessorManager.registerProcessor(appleIAPProcessor());
-        paymentProcessorManager.registerProcessor(alipayProecssor());
-        paymentProcessorManager.registerProcessor(wechatProecssor());
-        paymentProcessorManager.registerProcessor(pointsProcessor());
-        paymentProcessorManager.registerProcessor(accountsProcessor());
-        return paymentProcessorManager;
-    }
-
-    /**
-     * IAP payment processor.
-     * @return IAPProcessor.
-     */
-    @Bean(name = "IAPProecssor")
-    public PaymentProcessor appleIAPProcessor() {
-        return new IAPProcessor();
-    }
-
-    /**
-     * Alipay payment processor.
-     * @return AlipayProcessor.
-     */
-    @Bean(name = "alipayProecssor")
-    public PaymentProcessor alipayProecssor() {
-        AlipayProcessor processor = new AlipayProcessor();
-        processor.setCallback(callback);
-        processor.setPaymentRequestDAO(paymentRequestDAO);
-        processor.setPaymentResponseDAO(paymentResponseDAO);
-        processor.setPaymentsDAOService(paymentsDAOService);
-        processor.setSignatureGenerator(SignatureGenerator.BASE_32);
-        processor.setValidator(alipayValidator);
-        processor.setActionRecordDAO(actionRecordDAO);
-        processor.setFacade(alipayFacade);
-        processor.setBusinessProfileDeducer(businessProfileDeducer());
-        processor.setFastSearchTableDAO(fastSearchTableDAO);
-        processor.setAccountFactory(accountFactory);
-        processor.setAccountDeducer(accountDeducer());
-        return processor;
-    }
-
-    /**
-     * Wechat payment processor.
-     * @return WechatProcessor.
-     */
-    @Bean(name = "wechatProecssor")
-    public PaymentProcessor wechatProecssor() {
-        WechatProcessor processor = new WechatProcessor();
-        processor.setCallback(callback);
-        processor.setPaymentRequestDAO(paymentRequestDAO);
-        processor.setPaymentResponseDAO(paymentResponseDAO);
-        processor.setPaymentsDAOService(paymentsDAOService);
-        processor.setSignatureGenerator(SignatureGenerator.BASE_32);
-        processor.setActionRecordDAO(actionRecordDAO);
-        processor.setValidator(wechatValidator);
-        processor.setFacade(wechatFacade);
-        processor.setBusinessProfileDeducer(businessProfileDeducer());
-        processor.setFastSearchTableDAO(fastSearchTableDAO);
-        processor.setAccountFactory(accountFactory);
-        processor.setTradeTypeDeducer(new WechatTradeTypeDeducer());
-        processor.setAccountDeducer(accountDeducer());
-
-        return processor;
-    }
-
-    /**
      * Account deducer.
      * @return Account deducer.
      */
@@ -162,23 +85,4 @@ public class PaymentProcessorConfig {
         return deducer;
     }
 
-    /**
-     * Points payment processor.
-     * @return PointsProcessor.
-     */
-    @Bean(name = "pointsProcessor")
-    public PaymentProcessor pointsProcessor() {
-        PointsProcessor processor = new PointsProcessor();
-        return processor;
-    }
-
-    /**
-     * Account payment processor.
-     * @return AccountsProcessor.
-     */
-    @Bean(name = "accountsProcessor")
-    public PaymentProcessor accountsProcessor() {
-        AccountsProcessor processor = new AccountsProcessor();
-        return processor;
-    }
 }

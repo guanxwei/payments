@@ -15,17 +15,14 @@ public class PaymentRequest implements Serializable {
 
     // CHECKSTYLE:OFF
     private long id;
-    private String transactionID;
-    private String referenceID;
+    private String referenceIDList;
     private int status;
     private String channel;
     private Timestamp createTime;
     private Timestamp lastUpdateTime;
     private String requestedAmount;
-    private String paymentMethod;
-    private String parentID;
+    private String paymentMethodList;
     private long customerID;
-    private String url;
     private String paymentOperationType;
     private String callBackMetaInfo;
     private String business;
