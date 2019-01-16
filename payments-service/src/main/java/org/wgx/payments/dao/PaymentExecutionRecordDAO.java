@@ -13,10 +13,10 @@ public interface PaymentExecutionRecordDAO {
 
     /**
      * Save a new payment execution record in db.
-     * @param paymentExecutionRecord Payment execution record to be saved.
-     * @return {@code 1} succeed, {@code 0} failed.
+     * @param paymentExecutionRecords Payment execution record to be saved.
+     * @return {@code n} succeed, {@code 0} failed.
      */
-    int save(final PaymentExecutionRecord paymentExecutionRecord);
+    int save(final List<PaymentExecutionRecord> paymentExecutionRecords);
 
     /**
      * Find a record by id.

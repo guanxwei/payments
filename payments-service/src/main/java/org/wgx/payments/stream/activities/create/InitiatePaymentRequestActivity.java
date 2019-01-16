@@ -8,6 +8,7 @@ import org.stream.core.execution.WorkFlowContext;
 import org.stream.core.helper.Jackson;
 import org.stream.core.resource.Resource;
 import org.wgx.payments.builder.PaymentRequestBuilder;
+import org.wgx.payments.client.api.helper.PaymentMethod;
 import org.wgx.payments.client.api.io.CreatePaymentRequest;
 import org.wgx.payments.dao.PaymentRequestDAO;
 import org.wgx.payments.model.PaymentRequest;
@@ -23,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Slf4j
-public class InitiatePaymentRequest extends Activity {
+public class InitiatePaymentRequestActivity extends Activity {
 
     @javax.annotation.Resource
     private PaymentRequestDAO paymentRequestDAO;
@@ -42,7 +43,7 @@ public class InitiatePaymentRequest extends Activity {
                 .createTime(new Timestamp(System.currentTimeMillis()))
                 .customerID(createPaymentRequest.getCustomerID())
                 .lastUpdateTime(new Timestamp(System.currentTimeMillis()))
-                .paymentMethod(Jackson.json(createPaymentRequest.getPaymentMethod()))
+                .paymentMethod(PaymentMethod.fromCode(createPaymentRequest.getPaymentMethod()).paymentMethodName())
                 .paymentOperationType(createPaymentRequest.getPaymentOperationType())
                 .referenceIDList(Jackson.json(createPaymentRequest.getReferences().keySet()))
                 .requestedAmount(AmountUtils.total(createPaymentRequest.getReferences().values()).toString())
