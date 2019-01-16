@@ -33,4 +33,7 @@ public class PaymentExecutionRecord {
 
     // The time this execution request was completed.
     private long completeTime;
+
+    // A reference to the upstream trade system, typically an order id will be stored.
+    private String referenceID;
 }

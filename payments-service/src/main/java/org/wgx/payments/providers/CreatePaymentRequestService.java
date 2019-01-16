@@ -10,6 +10,7 @@ import org.stream.core.execution.WorkFlowContext;
 import org.stream.core.resource.ResourceTank;
 import org.stream.core.resource.ResourceType;
 import org.wgx.payments.client.api.Service;
+import org.wgx.payments.client.api.helper.PaymentMethod;
 import org.wgx.payments.client.api.helper.ResponseStatus;
 import org.wgx.payments.client.api.io.CreatePaymentRequest;
 import org.wgx.payments.client.api.io.CreatePaymentResponse;
@@ -58,7 +59,7 @@ public class CreatePaymentRequestService implements Service<CreatePaymentRequest
     }
 
     private boolean validateBasicInfo(final CreatePaymentRequest request) {
-        if (request.getPaymentMethod() == null || request.getPaymentMethod().size() < 1) {
+        if (PaymentMethod.fromCode(request.getPaymentMethod()) == null) {
             log.error("Payment method list can not be empty, something wrong happened. Request : [{}]", request);
             return false;
         }

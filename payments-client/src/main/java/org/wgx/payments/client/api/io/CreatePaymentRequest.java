@@ -1,7 +1,6 @@
 package org.wgx.payments.client.api.io;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
 
 import lombok.Data;
@@ -31,11 +30,8 @@ public class CreatePaymentRequest extends Request implements Serializable {
     private Map<String, String> references;
 
     /**
-     * Payment method code list. At most two payment method codes can be presented.
-     * In generic cases, clients will provide only one payment method code.
-     * To support cases like paying the order via Alipay & GiftCard, the clients should provide both these payment method code.
-     * Now multi-tender cases are not supported.
+     * Payment method code.
      */
-    private List<Integer> paymentMethod;
+    private Integer paymentMethod;
 
 }

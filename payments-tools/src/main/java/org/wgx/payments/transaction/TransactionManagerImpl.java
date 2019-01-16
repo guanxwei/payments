@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -21,8 +22,8 @@ public class TransactionManagerImpl extends org.apache.tomcat.jdbc.pool.DataSour
     private static final long STEP = 1000L;
 
     /**
-             * 分布式ID分配表，配置信息，必须在应用创建时也一并创建本表.
-             * 必须包含的字段为id bigint, tableName varchar(1024), cursor bigint, updateTime bigint.
+    * 分布式ID分配表，配置信息，必须在应用创建时也一并创建本表.
+    * 必须包含的字段为id bigint, tableName varchar(1024), cursor bigint, updateTime bigint.
     */
     private static final String ID_TABLE = "PaymentTables";
 
@@ -34,6 +35,10 @@ public class TransactionManagerImpl extends org.apache.tomcat.jdbc.pool.DataSour
     private volatile ThreadLocal<Boolean> isAutoCommit = new ThreadLocal<>();
 
     private ThreadLocal<Connection> connection = new ThreadLocal<>();
+
+    // Used in sharding env.
+    @Setter
+    private List<DataSource> dataSources;
 
     /**
      * {@inheritDoc}

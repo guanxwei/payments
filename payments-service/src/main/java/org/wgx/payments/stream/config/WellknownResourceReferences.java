@@ -12,7 +12,7 @@ public final class WellknownResourceReferences {
     /**
      * A reference to payment method list.
      */
-    public static final String PAYMENT_METHOD_LIST = "Payment::Method::List";
+    public static final String PAYMENT_METHOD = "Payment::Method";
 
     /**
      * A reference to internal payment method.

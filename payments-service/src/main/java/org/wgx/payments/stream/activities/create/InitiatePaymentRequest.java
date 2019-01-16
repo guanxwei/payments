@@ -42,7 +42,7 @@ public class InitiatePaymentRequest extends Activity {
                 .createTime(new Timestamp(System.currentTimeMillis()))
                 .customerID(createPaymentRequest.getCustomerID())
                 .lastUpdateTime(new Timestamp(System.currentTimeMillis()))
-                .paymentMethodList(Jackson.json(createPaymentRequest.getPaymentMethod()))
+                .paymentMethod(Jackson.json(createPaymentRequest.getPaymentMethod()))
                 .paymentOperationType(createPaymentRequest.getPaymentOperationType())
                 .referenceIDList(Jackson.json(createPaymentRequest.getReferences().keySet()))
                 .requestedAmount(AmountUtils.total(createPaymentRequest.getReferences().values()).toString())

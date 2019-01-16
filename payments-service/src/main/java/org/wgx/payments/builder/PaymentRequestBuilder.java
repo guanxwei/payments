@@ -18,7 +18,7 @@ public class PaymentRequestBuilder {
     private Timestamp createTime;
     private Timestamp lastUpdateTime;
     private String requestedAmount;
-    private String paymentMethodList;
+    private String paymentMethod;
     private long customerID;
     private String paymentOperationType;
     private String callBackMetaInfo;
@@ -45,7 +45,7 @@ public class PaymentRequestBuilder {
         result.setStatus(status);
         result.setCreateTime(createTime);
         result.setLastUpdateTime(lastUpdateTime);
-        result.setPaymentMethodList(paymentMethodList);
+        result.setPaymentMethod(paymentMethod);
         result.setRequestedAmount(requestedAmount);
         result.setPaymentOperationType(paymentOperationType);
         result.setCallBackMetaInfo(callBackMetaInfo);
@@ -85,8 +85,8 @@ public class PaymentRequestBuilder {
         return this;
     }
 
-    public PaymentRequestBuilder paymentMethodList(final String paymentMethodList) {
-        this.paymentMethodList = paymentMethodList;
+    public PaymentRequestBuilder paymentMethod(final String paymentMethod) {
+        this.paymentMethod = paymentMethod;
         return this;
     }
 
