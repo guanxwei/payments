@@ -24,9 +24,9 @@ public final class ObjectGenerator<T> {
     private static final Random RANDOM = new Random(System.nanoTime());
 
     public static <T> T generate(final Class<T> clazz) throws Exception {
+        @SuppressWarnings("deprecation")
         T o = clazz.newInstance();
 
-        
         Method[] methods = clazz.getDeclaredMethods();
         for (Method method : methods) {
             if (method.getName().startsWith("set")) {

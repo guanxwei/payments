@@ -90,7 +90,7 @@ public class Jackson {
         }
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "deprecation" })
     private static <T> T parseNodeValue(final JsonNode node, final Class<T> clazz) throws IOException {
         if (node == null) {
             return null;
