@@ -34,12 +34,12 @@
     </bean>
 
     <!-- 自带事务管理的datasource实现，底层基于tomcat-jdbc实现，同时继承了memcache做db，memcache的事务性更新操作 -->
-    <bean id="dataSource" class="org.wgx.payments.transaction.TransactionManagerImpl">
-        <property name="dataSource" ref="realDataSource" />
+    <bean id="db" class="org.wgx.payments.transaction.TransactionManagerImpl">
+        <property name="ds" ref="realDataSource" />
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="db" />
         <property name="mapperLocations" value="classpath:/mybatis/*.xml"></property>
     </bean>
 

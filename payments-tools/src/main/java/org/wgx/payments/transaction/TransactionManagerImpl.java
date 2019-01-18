@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -30,15 +29,13 @@ public class TransactionManagerImpl extends org.apache.tomcat.jdbc.pool.DataSour
     private Map<String, TableID> ids = new HashMap<>();
 
     @Setter
-    private DataSource dataSource;
+    private DataSource ds;
 
     private volatile ThreadLocal<Boolean> isAutoCommit = new ThreadLocal<>();
 
     private ThreadLocal<Connection> connection = new ThreadLocal<>();
 
-    // Used in sharding env.
-    @Setter
-    private List<DataSource> dataSources;
+
 
     /**
      * {@inheritDoc}
@@ -49,7 +46,7 @@ public class TransactionManagerImpl extends org.apache.tomcat.jdbc.pool.DataSour
             /**
              * Delegate the action to the underlying data source, here we used tomcat-jdbc to complete the real job.
              */
-            Connection dbConnection = dataSource.getConnection();
+            Connection dbConnection = ds.getConnection();
             dbConnection.setAutoCommit(getAutoCommit());
             connection.set(dbConnection);
         }
@@ -150,7 +147,7 @@ public class TransactionManagerImpl extends org.apache.tomcat.jdbc.pool.DataSour
 
     private TableID initiate(final String table) {
         synchronized (table) {
-            try (Connection connection = dataSource.getConnection();) {
+            try (Connection connection = ds.getConnection();) {
                 connection.setAutoCommit(false);
                 String sql = "select cursor from " + ID_TABLE + " where tableName = ? for update";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);

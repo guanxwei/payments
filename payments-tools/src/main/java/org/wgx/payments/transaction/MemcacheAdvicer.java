@@ -20,7 +20,7 @@ public class MemcacheAdvicer {
                     throw new DAOFrameWorkException("Fail to execute memcache action", e);
                 }
             });
-            return new Boolean(true);
+            return true;
         }
     }
 }

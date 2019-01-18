@@ -25,6 +25,8 @@ public final class ObjectGenerator<T> {
 
     public static <T> T generate(final Class<T> clazz) throws Exception {
         T o = clazz.newInstance();
+
+        
         Method[] methods = clazz.getDeclaredMethods();
         for (Method method : methods) {
             if (method.getName().startsWith("set")) {
