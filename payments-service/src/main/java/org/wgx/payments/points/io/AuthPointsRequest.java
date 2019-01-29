@@ -1,6 +1,7 @@
 package org.wgx.payments.points.io;
 
 import java.io.Serializable;
+import java.util.List;
 
 import lombok.Data;
 
@@ -10,7 +11,7 @@ import lombok.Data;
  *
  */
 @Data
-public class ConsumePointsRequest implements Serializable {
+public class AuthPointsRequest implements Serializable {
 
     /**
      * 
@@ -28,6 +29,9 @@ public class ConsumePointsRequest implements Serializable {
 
     // User id.
     private long userID;
+
+    // References.
+    private List<String> references;
 
     /** 
      * Flag indicates if it is okay to consume points less then the request amount when the user's points

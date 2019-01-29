@@ -1,7 +1,7 @@
 package org.wgx.payments.points.api;
 
-import org.wgx.payments.points.io.ConsumePointsRequest;
-import org.wgx.payments.points.io.ConsumePointsResponse;
+import org.wgx.payments.points.io.AuthPointsRequest;
+import org.wgx.payments.points.io.AuthPointsResponse;
 
 /**
  * Points service.
@@ -11,9 +11,10 @@ import org.wgx.payments.points.io.ConsumePointsResponse;
 public interface PointsService {
 
     /**
-     * Send request to points service to consume some points.
+     * Send request to points service to authorize some points.
      * @param consumePointsRequest Request detail.
      * @return A response to the request.
      */
-    ConsumePointsResponse consume(final ConsumePointsRequest consumePointsRequest);
+    AuthPointsResponse auth(final AuthPointsRequest authPointsRequests);
+
 }

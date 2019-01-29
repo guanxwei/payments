@@ -1,11 +1,12 @@
 package org.wgx.payments.points.io;
 
 import java.io.Serializable;
+import java.util.Map;
 
 import lombok.Data;
 
 @Data
-public class ConsumePointsResponse implements Serializable {
+public class AuthPointsResponse implements Serializable {
 
     /**
      * 
@@ -26,4 +27,6 @@ public class ConsumePointsResponse implements Serializable {
     // Transaction id used to refund the acknowledged amount.
     private String transactionID;
 
+    // Auth detail.
+    private Map<String, String> consumedAmounts;
 }
