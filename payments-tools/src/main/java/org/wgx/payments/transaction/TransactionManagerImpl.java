@@ -35,8 +35,6 @@ public class TransactionManagerImpl extends org.apache.tomcat.jdbc.pool.DataSour
 
     private ThreadLocal<Connection> connection = new ThreadLocal<>();
 
-
-
     /**
      * {@inheritDoc}
      */
