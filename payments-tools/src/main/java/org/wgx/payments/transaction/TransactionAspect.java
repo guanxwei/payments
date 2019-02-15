@@ -22,11 +22,11 @@ public class TransactionAspect {
                 TransactionUtils.begin();
                 Object result = point.proceed();
                 TransactionUtils.doActions();
+
                 transactionManager.commit();
                 TransactionUtils.end();
                 return result;
             } catch (Exception e) {
-                System.out.println("rollback transaction");
                 log.error("Rollback db action due to error", e);
                 transactionManager.rollback();
                 throw e;

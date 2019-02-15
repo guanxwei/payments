@@ -8,20 +8,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 import org.wgx.payments.dao.CheckOrderDiffDAO;
-import org.wgx.payments.dao.DAOConfiguration;
 import org.wgx.payments.model.CheckOrderDiffItem;
 import org.wgx.payments.tools.Jackson;
 import org.wgx.payments.tools.ObjectGenerator;
 
-@ContextConfiguration(classes = {
-        DAOConfiguration.class,
-        DaoTestConfiguration.class
-    })
-public class CheckOrderDiffDAOTest extends AbstractTestNGSpringContextTests {
+public class CheckOrderDiffDAOTest extends DAOTestBase {
 
     @Resource
     private CheckOrderDiffDAO checkOrderDiffDAO;

@@ -9,20 +9,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
-import org.wgx.payments.dao.DAOConfiguration;
 import org.wgx.payments.dao.PaymentResponseDAO;
 import org.wgx.payments.model.PaymentResponse;
 import org.wgx.payments.tools.ObjectGenerator;
 import org.wgx.payments.utils.DateUtils;
 
-@ContextConfiguration(classes = {
-        DAOConfiguration.class,
-        DaoTestConfiguration.class
-    })
-public class PaymentResponseDAOTest extends AbstractTestNGSpringContextTests {
+public class PaymentResponseDAOTest extends DAOTestBase {
 
     @Resource
     private PaymentResponseDAO paymentResponseDAO;

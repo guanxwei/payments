@@ -8,20 +8,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
-import org.wgx.payments.dao.DAOConfiguration;
 import org.wgx.payments.dao.ScheduleJobRecordDAO;
 import org.wgx.payments.model.ScheduleJobRecord;
 import org.wgx.payments.model.ScheduleJobStatus;
 import org.wgx.payments.tools.ObjectGenerator;
 
-@ContextConfiguration(classes = {
-        DAOConfiguration.class,
-        DaoTestConfiguration.class
-    })
-public class ScheduleJobRecordDAOTest extends AbstractTestNGSpringContextTests {
+public class ScheduleJobRecordDAOTest extends DAOTestBase {
 
     @Resource
     private ScheduleJobRecordDAO scheduleJobRecordDAO;

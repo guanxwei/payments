@@ -27,6 +27,7 @@ public class DAOConfiguration {
 
     @Resource
     private TransactionManager transactionManager;
+
     @Resource
     private SqlSessionFactory sqlSessionFactory;
 

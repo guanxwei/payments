@@ -35,7 +35,7 @@ public abstract class BaseFrameWorkDao extends SqlSessionDaoSupport {
         return sqlSessionFactory.openSession();
     }
 
-    protected <T> T process(Supplier<T> supplier) {
+    protected <T> T process(final Supplier<T> supplier) {
         try {
             return supplier.get();
         } catch (Exception e) {

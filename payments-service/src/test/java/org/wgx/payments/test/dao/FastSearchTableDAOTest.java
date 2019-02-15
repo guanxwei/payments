@@ -8,19 +8,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
-import org.wgx.payments.dao.DAOConfiguration;
 import org.wgx.payments.dao.FastSearchTableDAO;
 import org.wgx.payments.model.FastSearchTableItem;
 import org.wgx.payments.tools.ObjectGenerator;
 
-@ContextConfiguration(classes = {
-        DAOConfiguration.class,
-        DaoTestConfiguration.class
-    })
-public class FastSearchTableDAOTest extends AbstractTestNGSpringContextTests {
+public class FastSearchTableDAOTest extends DAOTestBase {
 
     @Resource
     private FastSearchTableDAO fastSearchTableDAO;
