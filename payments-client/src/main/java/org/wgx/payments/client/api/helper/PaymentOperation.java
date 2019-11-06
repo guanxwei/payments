@@ -7,7 +7,7 @@ package org.wgx.payments.client.api.helper;
 public enum PaymentOperation {
 
     /**
-     * Sign operation, sign an agreement between the customer and CloudMusic.
+     * Sign operation, sign an agreement between the customer and ***.
      */
     SIGN("sign") {
         @Override
@@ -17,7 +17,7 @@ public enum PaymentOperation {
     },
 
     /**
-     * Sign and charge operation, sign an agreement between the customer and CloudMusic,
+     * Sign and charge operation, sign an agreement between the customer and ***,
      * meanwhile charge money from the bank.
      */
     SIGN_AND_CHARGE("sign_and_charge") {

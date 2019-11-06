@@ -7,64 +7,9 @@ package org.wgx.payments.client.api.helper;
 public enum BusinessProfile {
 
     /**
-     * Retail business.
+     * Retail.
      */
-    RETAIL("Retail", "零售商品", "01"),
-
-    /**
-     * Cloud-music VIP service business.
-     */
-    VIP("VIP", "普通会员", "02"),
-
-    /**
-     * Cloud-music super VIP service business.
-     */
-    SUPER_VIP("SuperVIP", "豪华会员", "03"),
-
-    /**
-     * Cloud-music auto VIP charge service business.
-     */
-    AUTO_VIP("AutoVIP", "会员自动续费", "04"),
-
-    /**
-     * Cloud storage business.
-     */
-    YUN_PAN("Yunpan1", "云音乐云盘", "05"),
-
-    /**
-     * Album purchase business.
-     */
-    ALBUM("Album", "专辑购买", "06"),
-
-    /**
-     * Single song purchase business.
-     */
-    SINGLE_SONG("SingleSong", "单曲购买", "07"),
-
-    /**
-     * Ticket purchase business.
-     */
-    TICKET("Ticket", "票务", "08"),
-
-    /**
-     * Radio subscribe business.
-     */
-    RADIO("Radio", "电台", "09"),
-
-    /**
-     * Any virtual goods purchase business excluding Album, single-song, yunpan and VIP.
-     */
-    VIRTUAL("Virtual", "其他类虚拟商品", "10"),
-
-    /**
-     * 3rd party goods.
-     */
-    THIRD_PARTY("ThirdParty", "第三方货品", "11"),
-
-    /**
-     * Currently unrecognized business profile.
-     */
-    UNRECOGNIZED("Unrecognized", "其他货品", "12");
+    RETAIL("Retail", "零售", "001");
 
     private String profile;
 
@@ -119,7 +64,7 @@ public enum BusinessProfile {
                 return businessProfile;
             }
         }
-        return UNRECOGNIZED;
+        return RETAIL;
     }
 
     /**
@@ -133,6 +78,6 @@ public enum BusinessProfile {
                 return businessProfile;
             }
         }
-        return UNRECOGNIZED;
+        return RETAIL;
     }
 }
