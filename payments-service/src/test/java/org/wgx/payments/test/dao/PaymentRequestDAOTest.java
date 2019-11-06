@@ -31,7 +31,7 @@ public class PaymentRequestDAOTest extends DAOTestBase {
         long now = System.currentTimeMillis() + 100000;
         request.setLastUpdateTime(new Timestamp(now));
         assertEquals(paymentRequestDAO.update(request), 1);
-        PaymentRequest result = paymentRequestDAO.getPaymentRequestID(request.getId());
+        PaymentRequest result = paymentRequestDAO.getPaymentRequestByID(request.getId());
         assertNotNull(result);
         assertEquals(result.getStatus(), 100);
         assertEquals(result.getLastUpdateTime().getTime(), now);

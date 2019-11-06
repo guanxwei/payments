@@ -3,13 +3,13 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.wgx.payments.dao.PaymentRequestDAO">
     <insert id="save" parameterType="org.wgx.payments.model.PaymentRequest">
-        insert into PaymentRequest(id, referenceIDList, status, channel, createTime, lastUpdateTime, requestedAmount, paymentMethod, customerID, paymentOperationType, callBackMetaInfo, business) 
-        values (#{id}, #{referenceIDList}, #{status}, #{channel}, #{createTime}, #{lastUpdateTime}, #{requestedAmount}, #{paymentMethod},  #{customerID},  #{paymentOperationType}, #{callBackMetaInfo}, #{business}) 
+        insert into PaymentRequest(id, referenceID, status, channel, createTime, lastUpdateTime, requestedAmount, paymentMethod, customerID, paymentOperationType, callBackMetaInfo, business, parentRequestID, transactionID) 
+        values (#{id}, #{referenceID}, #{status}, #{channel}, #{createTime}, #{lastUpdateTime}, #{requestedAmount}, #{paymentMethod}, #{customerID}, #{paymentOperationType}, #{callBackMetaInfo}, #{business}, #{parentRequestID}, #{transactionID})
     </insert>
     <update id="update" parameterType="org.wgx.payments.model.PaymentRequest">
         update PaymentRequest set status = #{status}, lastUpdateTime = #{lastUpdateTime} where id = #{id} 
     </update>
-    <select id="getPaymentRequestID" resultType="org.wgx.payments.model.PaymentRequest">
+    <select id="getPaymentRequestByID" resultType="org.wgx.payments.model.PaymentRequest">
         select * from PaymentRequest where id = #{arg0}
     </select>
 </mapper>

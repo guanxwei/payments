@@ -16,14 +16,6 @@ public class PaymentResponseDAOImpl extends BaseFrameWorkDao implements PaymentR
      * {@inheritDoc}
      */
     @Override
-    public List<PaymentResponse> getPaymentResponseByReferenceIDAndBusiness(final String referenceID, final String business) {
-        return process(() -> getMapper(PaymentResponseDAO.class).getPaymentResponseByReferenceIDAndBusiness(referenceID, business));
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public int save(final PaymentResponse paymentResponse) {
         return process(() -> getMapper(PaymentResponseDAO.class).save(paymentResponse));
     }

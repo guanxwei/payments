@@ -29,13 +29,20 @@ public class PaymentRequestDAOImpl extends BaseFrameWorkDao implements PaymentRe
         return process(() -> getMapper(PaymentRequestDAO.class).update(paymentRequest));
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public PaymentRequest getPaymentRequestByID(final long id) {
+        return process(() -> getMapper(PaymentRequestDAO.class).getPaymentRequestByID(id));
+    }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public PaymentRequest getPaymentRequestID(final long id) {
-        return process(() -> getMapper(PaymentRequestDAO.class).getPaymentRequestID(id));
+    public PaymentRequest getPaymentRequestByTransactionID(String transactionID) {
+        return process(() -> getMapper(PaymentRequestDAO.class).getPaymentRequestByTransactionID(transactionID));
     }
 
 }

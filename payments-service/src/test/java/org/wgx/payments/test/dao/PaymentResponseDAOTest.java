@@ -21,50 +21,9 @@ public class PaymentResponseDAOTest extends DAOTestBase {
     private PaymentResponseDAO paymentResponseDAO;
 
     @Test
-    public void testgetPaymentResponseByReferenceIDAndBusiness() throws Exception {
-        PaymentResponse response = ObjectGenerator.generate(PaymentResponse.class);
-        assertEquals(paymentResponseDAO.save(response), 1);
-        List<PaymentResponse> responses = paymentResponseDAO.getPaymentResponseByReferenceIDAndBusiness(
-                response.getReferenceID(), response.getBusiness());
-        assertNotNull(responses);
-        assertEquals(responses.size(), 1);
-    }
-
-    @Test
     public void save() throws Exception {
         PaymentResponse response = ObjectGenerator.generate(PaymentResponse.class);
         assertEquals(paymentResponseDAO.save(response), 1);
-    }
-
-    @Test
-    public void update() throws Exception {
-        PaymentResponse response = ObjectGenerator.generate(PaymentResponse.class);
-        assertEquals(paymentResponseDAO.save(response), 1);
-        long now = System.currentTimeMillis() + 110000;
-        response.setStatus(2000);
-        response.setLastUpdateTime(new Timestamp(now));
-        assertEquals(paymentResponseDAO.update(response), 1);
-        PaymentResponse result = paymentResponseDAO.getPaymentResponseByTransactionID(response.getTransactionID());
-        assertEquals(result.getAcknowledgedAmount(), response.getAcknowledgedAmount());
-        assertEquals(result.getBusiness(), response.getBusiness());
-        assertEquals(response.getCreateTime(), result.getCreateTime());
-        assertEquals(result.getCustomerID(), response.getCustomerID());
-        assertEquals(result.getExternalTransactionID(), response.getExternalTransactionID());
-        assertEquals(result.getLastUpdateTime().getTime(), now);
-        assertEquals(result.getOperationType(), response.getOperationType());
-        assertEquals(result.getPaymentMethod(), response.getPaymentMethod());
-        assertEquals(result.getRawResponse(), response.getRawResponse());
-        assertEquals(result.getTransactionID(), response.getTransactionID());
-    }
-
-    @Test
-    public void getPaymentResponseListByCustomerIDAndOperationType() throws Exception {
-        PaymentResponse response = ObjectGenerator.generate(PaymentResponse.class);
-        assertEquals(paymentResponseDAO.save(response), 1);
-        List<PaymentResponse> responses = paymentResponseDAO.getPaymentResponseListByCustomerIDAndOperationType(
-                response.getCustomerID(), response.getOperationType());
-        assertNotNull(responses);
-        assertEquals(responses.size(), 1);
     }
 
     @Test

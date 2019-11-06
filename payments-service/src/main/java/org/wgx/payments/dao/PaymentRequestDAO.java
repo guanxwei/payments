@@ -22,10 +22,17 @@ public interface PaymentRequestDAO {
     int update(final PaymentRequest paymentRequest);
 
     /**
-     * Get PaymentRequest by transaction id.
+     * Get PaymentRequest by request id.
      * @param id Payment request's ID.
      * @return PaymentRequest DB record.
      */
-    PaymentRequest getPaymentRequestID(final long id);
+    PaymentRequest getPaymentRequestByID(final long id);
+
+    /**
+     * Get payment request by transaction id.
+     * @param transactionID Transaction id.
+     * @return Payment request.
+     */
+    PaymentRequest getPaymentRequestByTransactionID(final String transactionID);
 
 }

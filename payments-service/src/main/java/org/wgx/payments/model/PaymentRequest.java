@@ -15,16 +15,22 @@ public class PaymentRequest implements Serializable {
 
     // CHECKSTYLE:OFF
     private long id;
-    private String referenceIDList;
+    private String referenceID;
     private int status;
     private String channel;
     private Timestamp createTime;
     private Timestamp lastUpdateTime;
     private String requestedAmount;
-    private String paymentMethod;
+    private int paymentMethod;
     private long customerID;
     private String paymentOperationType;
     private String callBackMetaInfo;
     private String business;
+    /**
+     * Multi-order pay senarios needed, when the client initiate the multi-orders, all the orders should be payed
+     * in one turn-around.
+     */
+    private long parentRequestID;
+    private String transactionID;
     // CHECKSTYLE:ON
 }

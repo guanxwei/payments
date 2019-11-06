@@ -105,7 +105,7 @@ public class IDAllocator {
 
     /**
      * Table id 包装.
-     * @author weigu
+     * @author weiguanxiong
      *
      */
     @Data

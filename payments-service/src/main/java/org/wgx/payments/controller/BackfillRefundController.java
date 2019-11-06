@@ -53,7 +53,7 @@ public class BackfillRefundController {
             refundRequest.setTransactionID(transactionID);
             refundRequest.setCustomerID(response.getCustomerID());
             refundRequest.setPaymentOperationType(PaymentOperation.REFUND.operationType());
-            refundRequest.setReferenceID(response.getReferenceID());
+            //refundRequest.setReferenceID(response.getReferenceID());
             RefundResponse refundResponse = paymentsRefundService.execute(refundRequest);
             return JsonObject.start().code(refundResponse.getResponseCode()).msg(refundResponse.getResponseDescription());
         }

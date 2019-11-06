@@ -6,7 +6,7 @@ import javax.sql.DataSource;
 
 /**
  * Shared data base node selector.
- * @author weigu
+ * @author weiguanxiong.
  *
  */
 public interface DBNodeSelector {

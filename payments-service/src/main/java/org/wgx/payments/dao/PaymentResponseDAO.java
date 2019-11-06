@@ -10,14 +10,6 @@ import org.wgx.payments.model.PaymentResponse;
 public interface PaymentResponseDAO {
 
     /**
-     * Get PaymentResponse by reference id.
-     * @param referenceID ID.
-     * @param business Business name.
-     * @return PaymentResponse list.
-     */
-    List<PaymentResponse> getPaymentResponseByReferenceIDAndBusiness(final String referenceID, final String business);
-
-    /**
      * Save the PaymentRequest information.
      * @param paymentResponse PaymentResponse.
      * @return Result.

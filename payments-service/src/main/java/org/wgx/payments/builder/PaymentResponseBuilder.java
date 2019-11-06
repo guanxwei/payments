@@ -12,17 +12,11 @@ public class PaymentResponseBuilder {
 
     // CHECKSTYLE:OFF
     private String externalTransactionID;
-    private String transactionID;
     private int status;
     private String rawResponse;
     private Timestamp createTime;
-    private Timestamp lastUpdateTime;
-    private String referenceID;
-    private String paymentMethod;
-    private String operationType;
-    private String business;
-    private long customerID;
     private String acknowledgedAmount;
+    private long requestID;
     // CHECKSTYLE:ON
 
     /**
@@ -43,25 +37,14 @@ public class PaymentResponseBuilder {
         response.setExternalTransactionID(externalTransactionID);
         response.setRawResponse(rawResponse);
         response.setStatus(status);
-        response.setTransactionID(transactionID);
-        response.setLastUpdateTime(lastUpdateTime);
-        response.setReferenceID(referenceID);
-        response.setPaymentMethod(paymentMethod);
-        response.setOperationType(operationType);
-        response.setBusiness(business);
-        response.setCustomerID(customerID);
         response.setAcknowledgedAmount(acknowledgedAmount);
+        response.setRequestID(requestID);
         return response;
     }
 
     // CHECKSTYLE:OFF
     public PaymentResponseBuilder externalTransactionID(final String externalTransactionID) {
         this.externalTransactionID = externalTransactionID;
-        return this;
-    }
-
-    public PaymentResponseBuilder transactionID(final String transactionID) {
-        this.transactionID = transactionID;
         return this;
     }
 
@@ -80,38 +63,13 @@ public class PaymentResponseBuilder {
         return this;
     }
 
-    public PaymentResponseBuilder referenceID(final String referenceID) {
-        this.referenceID = referenceID;
-        return this;
-    }
-
-    public PaymentResponseBuilder paymentMethod(final String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-        return this;
-    }
-
-    public PaymentResponseBuilder lastUpdateTime(final Timestamp lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
-        return this;
-    }
-
-    public PaymentResponseBuilder operationType(final String operationType) {
-        this.operationType = operationType;
-        return this;
-    }
-
-    public PaymentResponseBuilder business(final String business) {
-        this.business = business;
-        return this;
-    }
-
-    public PaymentResponseBuilder customerID(final long customerID) {
-        this.customerID = customerID;
-        return this;
-    }
-
     public PaymentResponseBuilder acknowledgedAmount(final String acknowledgedAmount) {
         this.acknowledgedAmount = acknowledgedAmount;
+        return this;
+    }
+
+    public PaymentResponseBuilder requestID(final long requestID) {
+        this.requestID = requestID;
         return this;
     }
     // CHECKSTYLE:ON
