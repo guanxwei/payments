@@ -8,7 +8,6 @@ import org.stream.core.execution.Engine;
 import org.stream.core.execution.GraphContext;
 import org.stream.core.execution.WorkFlowContext;
 import org.stream.core.resource.ResourceTank;
-import org.stream.core.resource.ResourceType;
 import org.wgx.payments.client.api.Service;
 import org.wgx.payments.client.api.helper.PaymentMethod;
 import org.wgx.payments.client.api.helper.ResponseStatus;
@@ -50,7 +49,7 @@ public class CreatePaymentRequestService implements Service<CreatePaymentRequest
                 .value(request)
                 .build();
 
-        ResourceTank resourceTank = engine.executeOnce(graphContext, graphName, primary, false, ResourceType.OBJECT);
+        ResourceTank resourceTank = engine.executeOnce(graphContext, graphName, primary, false);
 
         org.stream.core.resource.Resource response = resourceTank.resolve(WorkFlowContext.WORK_FLOW_RESPONSE_REFERENCE);
         CreatePaymentResponse createPaymentResponse = response.resolveValue(CreatePaymentResponse.class);

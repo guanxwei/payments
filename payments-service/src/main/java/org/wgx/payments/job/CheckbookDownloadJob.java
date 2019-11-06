@@ -379,9 +379,6 @@ public class CheckbookDownloadJob {
             final String business, final AtomicInteger total) {
         // Charge record.
         item.setType(PaymentOperation.CHARGE.operationType());
-        if (BusinessProfile.AUTO_VIP.equals(profile)) {
-            item.setType(PaymentOperation.SCHEDULEDPAY.operationType());
-        }
         item.setAcknowledgedAmount(element.element("total_fee").getText());
         item.setTransactionID(element.element("merchant_out_order_no").getText());
         item.setExternalTransactionID(element.element("trade_no").getText());
@@ -529,9 +526,6 @@ public class CheckbookDownloadJob {
         item.setAcknowledgedAmount(acknowledgedAmount);
 
         item.setType(PaymentOperation.CHARGE.operationType());
-        if (BusinessProfile.AUTO_VIP.equals(profile)) {
-            item.setType(PaymentOperation.SCHEDULEDPAY.operationType());
-        }
         double fee = Double.parseDouble(acknowledgedAmount);
         //business = paymentRequestDAO.getPaymentRequestByTransactionID(transactionID).getBusiness();
         String statisticKey = StringUtils.join(new Object[] {profile.profile(),

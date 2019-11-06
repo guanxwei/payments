@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.wgx.payments.account.PaymentAccountClient;
 import org.wgx.payments.callback.Callback;
-import org.wgx.payments.client.api.helper.BusinessProfile;
 import org.wgx.payments.client.api.io.CreateOrUpdatePaymentResponseRequest;
 import org.wgx.payments.client.api.io.Request;
 import org.wgx.payments.dao.ActionRecordDAO;
@@ -16,7 +15,6 @@ import org.wgx.payments.dao.PaymentRequestDAO;
 import org.wgx.payments.dao.PaymentResponseDAO;
 import org.wgx.payments.dao.service.PaymentsDAOService;
 import org.wgx.payments.deducer.AccountDeducer;
-import org.wgx.payments.deducer.BusinessProfileDeducer;
 import org.wgx.payments.deducer.Deducer;
 import org.wgx.payments.facade.Facade;
 import org.wgx.payments.signature.AccountFactory;
@@ -64,15 +62,6 @@ public class PaymentProcessorConfig {
 
     @Resource(name = "paymentAccountClient")
     private PaymentAccountClient paymentAccountClient;
-
-    /**
-     * Business profile deducer bean definition.
-     * @return BusinessProfileDeducer.
-     */
-    @Bean(name = "businessProfileDeducer")
-    public Deducer<String, BusinessProfile> businessProfileDeducer() {
-        return new BusinessProfileDeducer();
-    }
 
     /**
      * Account deducer.
