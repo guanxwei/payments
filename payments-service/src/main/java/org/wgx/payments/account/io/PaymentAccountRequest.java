@@ -17,7 +17,7 @@ public class PaymentAccountRequest implements Serializable {
     private String business;
 
     // 支付方式
-    private String paymentMethod;
+    private int paymentMethod;
 
     // 设备代码
     private String deviceType;

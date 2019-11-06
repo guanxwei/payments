@@ -63,7 +63,7 @@ public class AccountController {
 
         PaymentAccount raw = paymentAccountDAO.get(paymentAccount.getId());
         if (!raw.getAccountName().equals(paymentAccount.getAccountName())
-                || !raw.getPaymentMethod().equals(paymentAccount.getPaymentMethod())) {
+                || raw.getPaymentMethod() != paymentAccount.getPaymentMethod()) {
             return JsonObject.start().code(400).msg("当前仅支持修改account no.");
         }
 
@@ -92,7 +92,7 @@ public class AccountController {
         try {
             paymentAccount = Jackson.parse(json, PaymentAccount.class);
             if (paymentAccount.getAccountName() == null || paymentAccount.getAccountNo() == null
-                    || PaymentMethod.fromName(paymentAccount.getPaymentMethod()) == null) {
+                    || PaymentMethod.fromCode(paymentAccount.getPaymentMethod()) == null) {
                 throw new RuntimeException("Unvalid request");
             }
         } catch (Exception e) {

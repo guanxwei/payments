@@ -68,7 +68,7 @@ public class PaymentProcessorConfig {
      * @return Account deducer.
      */
     @Bean(name = "accountDeducer")
-    public Deducer<Pair<Request, String>, Pair<String, String>> accountDeducer() {
+    public Deducer<Pair<Request, Integer>, Pair<String, String>> accountDeducer() {
         AccountDeducer deducer = new AccountDeducer();
         deducer.setPaymentAccountClient(paymentAccountClient);
         return deducer;

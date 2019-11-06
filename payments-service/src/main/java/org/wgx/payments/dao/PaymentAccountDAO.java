@@ -43,7 +43,7 @@ public interface PaymentAccountDAO {
      * @param paymentMethod Payment method name.
      * @return Payment account list associated to the specific paymentMethod.
      */
-    List<PaymentAccount> getByPaymentMethod(final String paymentMethod);
+    List<PaymentAccount> getByPaymentMethod(final int paymentMethod);
 
     /**
      * Get payment account by id.

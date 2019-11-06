@@ -21,5 +21,5 @@ public class PaymentAccount implements Serializable {
     // The account number assigned by 3P payment gateway, like merchant_id by Wechat and partnerID by Alipay.
     private String accountNo;
 
-    private String paymentMethod;
+    private int paymentMethod;
 }

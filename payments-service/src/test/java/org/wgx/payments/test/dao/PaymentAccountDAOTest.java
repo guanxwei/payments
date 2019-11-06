@@ -27,11 +27,11 @@ public class PaymentAccountDAOTest extends DAOTestBase {
     public void testedit() throws Exception {
         PaymentAccount account = ObjectGenerator.generate(PaymentAccount.class);
         assertEquals(paymentAccountDAO.save(account), 1);
-        account.setPaymentMethod("test");
+        account.setPaymentMethod(1);
         assertEquals(paymentAccountDAO.edit(account), 1);
         PaymentAccount result = paymentAccountDAO.get(account.getId());
         assertEquals(account.getPaymentMethod(), result.getPaymentMethod());
-        assertEquals("test", result.getPaymentMethod());
+        assertEquals(1, result.getPaymentMethod());
 
     }
 

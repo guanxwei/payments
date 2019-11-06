@@ -48,7 +48,7 @@ public class PaymentAccountDAOImpl extends BaseFrameWorkDao implements PaymentAc
      * {@inheritDoc}
      */
     @Override
-    public List<PaymentAccount> getByPaymentMethod(final String paymentMethod) {
+    public List<PaymentAccount> getByPaymentMethod(final int paymentMethod) {
         return process(() -> getMapper(PaymentAccountDAO.class).getByPaymentMethod(paymentMethod));
     }
 

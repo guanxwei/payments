@@ -8,5 +8,5 @@ CREATE TABLE if not exists PaymentRequest (id bigint primary key,referenceID var
 CREATE TABLE if not exists PaymentResponse (id bigint primary key,requestID bigint,referenceID varchar(100),externalTransactionID varchar(64),status integer,createTime timestamp,acknowledgedamount varchar(20),customerID bigint,rawResponse varchar(2048));
 CREATE TABLE if not exists ScheduleJobRecord (id bigint primary key,jobID varchar(64),createTime timestamp,updateTime timestamp,jobstatus varchar(16) ,nextWorkTime timestamp,retryTimes smallint,description varchar(255) ,ext1 varchar(255) ,ext2 varchar(1204));
 CREATE TABLE if not exists PaymentStatistic (id bigint primary key,business varchar(20),paymentMethod varchar(10),paymentOperation varchar(20),date integer,amount varchar(32),target varchar(100));
-CREATE TABLE if not exists PaymentAccount (id bigint primary key, accountName varchar(255), accountNo varchar(255), paymentMethod varchar(30));
+CREATE TABLE if not exists PaymentAccount (id bigint primary key, accountName varchar(255), accountNo varchar(255), paymentMethod int);
 create table if not exists PaymentAccountScope (id bigint primary key, accountID bigint, supportedOperations varchar(255), issuingBanks varchar(255), issuer varchar(30), deviceType varchar(32), supportedBusinesses varchar(255));

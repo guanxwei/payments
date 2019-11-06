@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Data
 @Slf4j
-public class AccountDeducer implements Deducer<Pair<Request, String>, Pair<String, String>> {
+public class AccountDeducer implements Deducer<Pair<Request, Integer>, Pair<String, String>> {
 
     private PaymentAccountClient paymentAccountClient;
 
@@ -25,11 +25,11 @@ public class AccountDeducer implements Deducer<Pair<Request, String>, Pair<Strin
      * {@inheritDoc}
      */
     @Override
-    public Pair<String, String> deduce(final Pair<Request, String> request) {
+    public Pair<String, String> deduce(final Pair<Request, Integer> request) {
         Pair<String, String> pair = Pair.of(null, null);
         PaymentAccountRequest paymentAccountRequest = new PaymentAccountRequest();
         paymentAccountRequest.setBusiness(request.getLeft().getBusiness());
-        if (request.getRight().equals(PaymentMethod.WECHAT.paymentMethodName())) {
+        if (request.getRight().equals(PaymentMethod.WECHAT.paymentMethodCode())) {
             paymentAccountRequest.setDeviceType(request.getLeft().getChannel());
         }
         paymentAccountRequest.setPaymentOperation(request.getLeft().getPaymentOperationType());
