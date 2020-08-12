@@ -2,6 +2,7 @@ package org.wgx.payments.providers;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.stream.core.execution.Engine;
@@ -58,13 +59,31 @@ public class CreatePaymentRequestService implements Service<CreatePaymentRequest
     }
 
     private boolean validateBasicInfo(final CreatePaymentRequest request) {
-        if (PaymentMethod.fromCode(request.getPaymentMethod()) == null) {
+        if (CollectionUtils.isEmpty(request.getPaymentMethod())) {
             log.error("Payment method list can not be empty, something wrong happened. Request : [{}]", request);
             return false;
         }
         if (request.getPaymentOperationType() == null || request.getPaymentOperationType().length() == 0) {
             log.error("Payment operation can not be missing, something wrong happened. Request : [{}]", request);
         }
+        long thirdPartyMethods = request.getPaymentMethod().stream()
+                .filter(method -> PaymentMethod.fromCode(method) != null)
+                .filter(method -> !PaymentMethod.fromCode(method).isInternal())
+                .count();
+        if (thirdPartyMethods > 1) {
+            log.error("Only one third party payment method can be selected");
+            return false;
+        }
+
+        long internalPartyMethods = request.getPaymentMethod().stream()
+                .filter(method -> PaymentMethod.fromCode(method) != null)
+                .filter(method -> PaymentMethod.fromCode(method).isInternal())
+                .count();
+        if (internalPartyMethods > 1) {
+            log.error("Only one internal payment method can be selected");
+            return false;
+        }
+
         return true;
     }
 

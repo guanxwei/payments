@@ -1,6 +1,7 @@
 package org.wgx.payments.client.api.io;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 import lombok.Data;
@@ -32,6 +33,10 @@ public class CreatePaymentRequest extends Request implements Serializable {
     /**
      * Payment method code.
      */
-    private Integer paymentMethod;
+    private List<Integer> paymentMethod;
 
+    /**
+     * Payments channel, web, mobile, etc.
+     */
+    private String paymentsChannel;
 }

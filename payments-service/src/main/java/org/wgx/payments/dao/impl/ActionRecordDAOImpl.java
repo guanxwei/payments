@@ -9,15 +9,14 @@ import org.wgx.payments.model.ActionRecord;
 /**
  * Mybatis based implementation of {@linkplain ActionRecordDAO}.
  */
-public class ActionRecordDAOImpl extends BaseFrameWorkDao implements ActionRecordDAO {
+public class ActionRecordDAOImpl extends BaseFrameWorkDao<ActionRecordDAO> implements ActionRecordDAO {
 
     /**
      * {@inheritDoc}
      */
     @Override
     public int record(final ActionRecord record) {
-        ActionRecordDAO mapper = getMapper(ActionRecordDAO.class);
-        return process(() -> mapper.record(record));
+        return getMapper().record(record);
     }
 
     /**
@@ -25,8 +24,7 @@ public class ActionRecordDAOImpl extends BaseFrameWorkDao implements ActionRecor
      */
     @Override
     public List<ActionRecord> queryByTransactionID(final String transactionID) {
-        ActionRecordDAO mapper = getMapper(ActionRecordDAO.class);
-        return process(() -> mapper.queryByTransactionID(transactionID));
+        return getMapper().queryByTransactionID(transactionID);
     }
 
 }

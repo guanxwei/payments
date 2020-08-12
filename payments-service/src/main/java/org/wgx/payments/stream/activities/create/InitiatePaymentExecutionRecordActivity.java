@@ -31,6 +31,9 @@ public class InitiatePaymentExecutionRecordActivity extends Activity {
     public ActivityResult act() {
         Resource primary = WorkFlowContext.getPrimary();
         CreatePaymentRequest createPaymentRequest = primary.resolveValue(CreatePaymentRequest.class);
+        if (createPaymentRequest.getPaymentMethod().size() > 1) {
+            
+        }
         List<PaymentExecutionRecord> paymentExecutionRecords = new LinkedList<>();
         fill(paymentExecutionRecords, createPaymentRequest);
         paymentExecutionRecordDAO.save(paymentExecutionRecords);

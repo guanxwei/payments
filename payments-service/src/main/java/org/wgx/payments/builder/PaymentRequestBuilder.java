@@ -25,6 +25,7 @@ public class PaymentRequestBuilder {
     private String business;
     private long parentRequestID;
     private String transactionID;
+    private long id;
     // CHECKSTYLE:ON
 
     /**
@@ -54,6 +55,7 @@ public class PaymentRequestBuilder {
         result.setBusiness(business);
         result.setTransactionID(transactionID);
         result.setParentRequestID(parentRequestID);
+        result.setId(id);
         return result;
     }
 
@@ -121,6 +123,11 @@ public class PaymentRequestBuilder {
 
     public PaymentRequestBuilder parentRequestID(final long parentRequestID) {
         this.parentRequestID = parentRequestID;
+        return this;
+    }
+
+    public PaymentRequestBuilder id(final long id) {
+        this.id = id;
         return this;
     }
     // CHECKSTYLE:ON

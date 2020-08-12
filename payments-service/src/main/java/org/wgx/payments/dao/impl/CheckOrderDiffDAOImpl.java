@@ -11,14 +11,14 @@ import org.wgx.payments.model.CheckOrderDiffItem;
  * Mybatis based implementation of {@linkplain CheckbookItemDAO}.
  *
  */
-public class CheckOrderDiffDAOImpl extends BaseFrameWorkDao implements CheckOrderDiffDAO {
+public class CheckOrderDiffDAOImpl extends BaseFrameWorkDao<CheckOrderDiffDAO> implements CheckOrderDiffDAO {
 
     /**
      * {@inheritDoc}
      */
     @Override
     public int save(final CheckOrderDiffItem checkOrderDiffItem) {
-        return process(() -> getMapper(CheckOrderDiffDAO.class).save(checkOrderDiffItem));
+        return getMapper().save(checkOrderDiffItem);
     }
 
     /**
@@ -26,8 +26,7 @@ public class CheckOrderDiffDAOImpl extends BaseFrameWorkDao implements CheckOrde
      */
     @Override
     public CheckOrderDiffItem find(final long id) {
-        return process(() -> getMapper(CheckOrderDiffDAO.class).find(id));
-
+        return getMapper().find(id);
     }
 
     /**
@@ -35,7 +34,7 @@ public class CheckOrderDiffDAOImpl extends BaseFrameWorkDao implements CheckOrde
      */
     @Override
     public List<CheckOrderDiffItem> list(final int limit, final int offset, final int status) {
-        return process(() -> getMapper(CheckOrderDiffDAO.class).list(limit, offset, status));
+        return getMapper().list(limit, offset, status);
     }
 
     /**
@@ -43,7 +42,7 @@ public class CheckOrderDiffDAOImpl extends BaseFrameWorkDao implements CheckOrde
      */
     @Override
     public int updateStatus(final long id, final int status) {
-        return process(() -> getMapper(CheckOrderDiffDAO.class).updateStatus(id, status));
+        return getMapper().updateStatus(id, status);
     }
 
     /**
@@ -51,7 +50,7 @@ public class CheckOrderDiffDAOImpl extends BaseFrameWorkDao implements CheckOrde
      */
     @Override
     public int count(final int status) {
-        return process(() -> getMapper(CheckOrderDiffDAO.class).count(status));
+        return getMapper().count(status);
     }
 
 }

@@ -10,14 +10,14 @@ import org.wgx.payments.model.CheckbookItem;
  * Mybatis based implementation of {@linkplain CheckbookItemDAO}.
  *
  */
-public class CheckbookItemDAOImpl extends BaseFrameWorkDao implements CheckbookItemDAO {
+public class CheckbookItemDAOImpl extends BaseFrameWorkDao<CheckbookItemDAO> implements CheckbookItemDAO {
 
     /**
      * {@inheritDoc}
      */
     @Override
     public List<CheckbookItem> getListByTransactionID(final String transactionID) {
-        return process(() -> getMapper(CheckbookItemDAO.class).getListByTransactionID(transactionID));
+        return getMapper().getListByTransactionID(transactionID);
     }
 
     /**
@@ -25,7 +25,7 @@ public class CheckbookItemDAOImpl extends BaseFrameWorkDao implements CheckbookI
      */
     @Override
     public List<CheckbookItem> list(final int limit, final int offset, final int status) {
-        return process(() -> getMapper(CheckbookItemDAO.class).list(limit, offset, status));
+        return getMapper().list(limit, offset, status);
     }
 
     /**
@@ -33,7 +33,7 @@ public class CheckbookItemDAOImpl extends BaseFrameWorkDao implements CheckbookI
      */
     @Override
     public int save(final CheckbookItem item) {
-        return process(() -> getMapper(CheckbookItemDAO.class).save(item));
+        return getMapper().save(item);
     }
 
     /**
@@ -41,7 +41,7 @@ public class CheckbookItemDAOImpl extends BaseFrameWorkDao implements CheckbookI
      */
     @Override
     public CheckbookItem findByUniqueItem(final String uniqueKey) {
-        return process(() -> getMapper(CheckbookItemDAO.class).findByUniqueItem(uniqueKey));
+        return getMapper().findByUniqueItem(uniqueKey);
     }
 
     /**
@@ -49,7 +49,7 @@ public class CheckbookItemDAOImpl extends BaseFrameWorkDao implements CheckbookI
      */
     @Override
     public List<CheckbookItem> getCheckbookItemsByRange(final String beginTime, final String endTime) {
-        return process(() -> getMapper(CheckbookItemDAO.class).getCheckbookItemsByRange(beginTime, endTime));
+        return getMapper().getCheckbookItemsByRange(beginTime, endTime);
     }
 
 }

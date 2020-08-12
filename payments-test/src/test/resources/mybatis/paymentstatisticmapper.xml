@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wgx.payments.dao.PaymentStatisticDAO">
+    <insert id="save">
+       insert into PaymentStatistic(id, business, paymentMethod, paymentOperation, date, amount, target) 
+        values (#{id}, #{business}, #{paymentMethod}, #{paymentOperation}, #{date}, #{amount}, #{target})
+    </insert>
+    <select id="getLatestByBusiness" resultType="org.wgx.payments.model.PaymentStatistic">
+        select * from PaymentStatistic where date = #{arg1} and business = #{arg0}
+    </select>
+    <select id="getLatestByBusinessAndPaymentMethod" resultType="org.wgx.payments.model.PaymentStatistic">
+        select * from PaymentStatistic where date = #{arg2} and business = #{arg0} and paymentMethod = #{arg1}
+    </select>
+    <select id="getByDate" resultType="org.wgx.payments.model.PaymentStatistic">
+        <![CDATA[
+            select * from PaymentStatistic where date >= #{arg0} and date <= #{arg1}
+        ]]>
+    </select>
+</mapper>

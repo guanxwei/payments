@@ -35,4 +35,9 @@ public interface PaymentRequestDAO {
      */
     PaymentRequest getPaymentRequestByTransactionID(final String transactionID);
 
+    /**
+     * Allocate table id from the db server.
+     * @return Table id.
+     */
+    long allocateID();
 }

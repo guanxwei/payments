@@ -20,7 +20,7 @@ public class PaymentRequest implements Serializable {
     private String channel;
     private Timestamp createTime;
     private Timestamp lastUpdateTime;
-    private String requestedAmount;
+    private String requestedAmount;// 申请支付总金额
     private int paymentMethod;
     private long customerID;
     private String paymentOperationType;
@@ -32,5 +32,7 @@ public class PaymentRequest implements Serializable {
      */
     private long parentRequestID;
     private String transactionID;
+    private String deductiveAmount; //内部积分，零钱，金币等可抵扣金额.
+    private String acknowledgedAmount; // 实收金额，从外部支付取到收到的金额，ra = da + aa;
     // CHECKSTYLE:ON
 }

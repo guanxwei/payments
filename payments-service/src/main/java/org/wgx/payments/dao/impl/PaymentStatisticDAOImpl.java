@@ -10,14 +10,14 @@ import org.wgx.payments.model.PaymentStatistic;
  * Mybatis based implementation of {@link PaymentStatisticDAO}.
  *
  */
-public class PaymentStatisticDAOImpl extends BaseFrameWorkDao implements PaymentStatisticDAO {
+public class PaymentStatisticDAOImpl extends BaseFrameWorkDao<PaymentStatisticDAO> implements PaymentStatisticDAO {
 
     /**
      * {@inheritDoc}
      */
     @Override
     public int save(final PaymentStatistic paymentStatistic) {
-        return process(() -> getMapper(PaymentStatisticDAO.class).save(paymentStatistic));
+        return getMapper().save(paymentStatistic);
     }
 
     /**
@@ -25,7 +25,7 @@ public class PaymentStatisticDAOImpl extends BaseFrameWorkDao implements Payment
      */
     @Override
     public List<PaymentStatistic> getLatestByBusiness(final String business, final int date) {
-        return process(() -> getMapper(PaymentStatisticDAO.class).getLatestByBusiness(business, date));
+        return getMapper().getLatestByBusiness(business, date);
     }
 
     /**
@@ -33,7 +33,7 @@ public class PaymentStatisticDAOImpl extends BaseFrameWorkDao implements Payment
      */
     @Override
     public List<PaymentStatistic> getLatestByBusinessAndPaymentMethod(final String business, final String paymentMethod, final int date) {
-        return process(() -> getMapper(PaymentStatisticDAO.class).getLatestByBusinessAndPaymentMethod(business, paymentMethod, date));
+        return getMapper().getLatestByBusinessAndPaymentMethod(business, paymentMethod, date);
     }
 
     /**
@@ -41,7 +41,7 @@ public class PaymentStatisticDAOImpl extends BaseFrameWorkDao implements Payment
      */
     @Override
     public List<PaymentStatistic> getByDate(final int begin, final int end) {
-        return process(() -> getMapper(PaymentStatisticDAO.class).getByDate(begin, end));
+        return getMapper().getByDate(begin, end);
     }
 
 }

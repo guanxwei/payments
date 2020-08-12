@@ -15,6 +15,6 @@ public class SettlePointsRequest implements Serializable {
     private static final long serialVersionUID = 8367428201359970728L;
 
     // Target reference
-    private String reference;
+    private String requestID;
 
 }

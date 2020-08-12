@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+                        http://www.springframework.org/schema/jdbc
+                        http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+                        http://www.springframework.org/schema/mvc
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+    <import resource="aop.xml"/>
+    <bean id="dbInitiator" class="org.wgx.payments.dao.HsqlStarter" init-method="init">
+        <property name="dataSource" ref="realDataSource"></property>
+        <property name="path" value="/hsql.script"></property>
+    </bean>
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:jdbc.properties" />
+    </bean>
+
+    <bean id="realDataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+        <property name="driverClassName" value="${driver}" />
+        <property name="url" value="${url}"></property>
+        <property name="initialSize" value="${initialSize}"></property>
+        <property name="maxActive" value="${maxActive}"></property>
+        <property name="maxIdle" value="${maxIdle}"></property>
+        <property name="minIdle" value="${minIdle}"></property>
+        <property name="maxWait" value="${maxWait}"></property>
+    </bean>
+
+    <!-- 自带事务管理的datasource实现，底层基于tomcat-jdbc实现，同时继承了memcache做db，memcache的事务性更新操作 -->
+    <bean id="db" class="org.wgx.payments.transaction.TransactionManagerImpl" destroy-method="close">  
+        <property name="ds" ref="realDataSource" />
+    </bean>
+
+    <bean id="daoMethodEnhancer" class="org.wgx.payments.dao.DAOEnhanceAdvice"></bean>
+    <bean id="daoenhancer" class="org.wgx.payments.dao.DAOAfterSet"></bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="db" />
+        <property name="mapperLocations" value="classpath:/mybatis/*.xml"></property>
+    </bean>
+
+</beans>

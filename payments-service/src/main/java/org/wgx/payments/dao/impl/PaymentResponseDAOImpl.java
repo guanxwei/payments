@@ -10,14 +10,14 @@ import org.wgx.payments.model.PaymentResponse;
  * Mybatis based implementation of {@linkplain PaymentResponseDAO}.
  *
  */
-public class PaymentResponseDAOImpl extends BaseFrameWorkDao implements PaymentResponseDAO {
+public class PaymentResponseDAOImpl extends BaseFrameWorkDao<PaymentResponseDAO> implements PaymentResponseDAO {
 
     /**
      * {@inheritDoc}
      */
     @Override
     public int save(final PaymentResponse paymentResponse) {
-        return process(() -> getMapper(PaymentResponseDAO.class).save(paymentResponse));
+        return getMapper().save(paymentResponse);
     }
 
     /**
@@ -25,7 +25,7 @@ public class PaymentResponseDAOImpl extends BaseFrameWorkDao implements PaymentR
      */
     @Override
     public int update(final PaymentResponse paymentResponse) {
-        return process(() -> getMapper(PaymentResponseDAO.class).update(paymentResponse));
+        return getMapper().update(paymentResponse);
     }
 
     /**
@@ -33,7 +33,7 @@ public class PaymentResponseDAOImpl extends BaseFrameWorkDao implements PaymentR
      */
     @Override
     public PaymentResponse getPaymentResponseByTransactionID(final String transactionID) {
-        return process(() -> getMapper(PaymentResponseDAO.class).getPaymentResponseByTransactionID(transactionID));
+        return getMapper().getPaymentResponseByTransactionID(transactionID);
     }
 
     /**
@@ -42,7 +42,7 @@ public class PaymentResponseDAOImpl extends BaseFrameWorkDao implements PaymentR
     @Override
     public List<PaymentResponse> getPaymentResponseListByCustomerIDAndOperationType(final long customerID,
             final String operationType) {
-        return process(() -> getMapper(PaymentResponseDAO.class).getPaymentResponseListByCustomerIDAndOperationType(customerID, operationType));
+        return getMapper().getPaymentResponseListByCustomerIDAndOperationType(customerID, operationType);
     }
 
     /**
@@ -50,7 +50,7 @@ public class PaymentResponseDAOImpl extends BaseFrameWorkDao implements PaymentR
      */
     @Override
     public List<PaymentResponse> getPaymentResponseListByRange(final String beginTime, final String endTime) {
-        return process(() -> getMapper(PaymentResponseDAO.class).getPaymentResponseListByRange(beginTime, endTime));
+        return getMapper().getPaymentResponseListByRange(beginTime, endTime);
     }
 
 }

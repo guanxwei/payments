@@ -31,6 +31,10 @@
         <artifactId>payments-tools</artifactId>
     </dependency>
     <dependency>
+        <groupId>org.wgx.payments</groupId>
+        <artifactId>payments-virtual</artifactId>
+    </dependency>
+    <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
     </dependency>
@@ -79,13 +83,6 @@
         <artifactId>lombok</artifactId>
         <scope>provided</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb -->
-    <dependency>
-        <groupId>org.hsqldb</groupId>
-        <artifactId>hsqldb</artifactId>
-        <version>2.4.0</version>
-        <scope>test</scope>
-    </dependency>
     <dependency>
         <groupId>org.testng</groupId>
         <artifactId>testng</artifactId>
@@ -123,6 +120,5 @@
         <artifactId>fast-stream</artifactId>
         <version>5.0.0</version>
     </dependency>
-
   </dependencies>
 </project>

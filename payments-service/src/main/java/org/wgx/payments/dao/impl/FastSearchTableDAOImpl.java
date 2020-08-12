@@ -10,14 +10,14 @@ import org.wgx.payments.model.FastSearchTableItem;
  * Mybatis based implementation of {@linkplain FastSearchTableDAO}.
  *
  */
-public class FastSearchTableDAOImpl extends BaseFrameWorkDao implements FastSearchTableDAO {
+public class FastSearchTableDAOImpl extends BaseFrameWorkDao<FastSearchTableDAO> implements FastSearchTableDAO {
 
     /**
      * {@inheritDoc}
      */
     @Override
     public int save(final FastSearchTableItem item) {
-        return process(() -> getMapper(FastSearchTableDAO.class).save(item));
+        return getMapper().save(item);
     }
 
     /**
@@ -25,7 +25,7 @@ public class FastSearchTableDAOImpl extends BaseFrameWorkDao implements FastSear
      */
     @Override
     public FastSearchTableItem find(final String key) {
-        return process(() -> getMapper(FastSearchTableDAO.class).find(key));
+        return getMapper().find(key);
     }
 
     /**
@@ -33,7 +33,7 @@ public class FastSearchTableDAOImpl extends BaseFrameWorkDao implements FastSear
      */
     @Override
     public List<FastSearchTableItem> list(final String key, final int status) {
-        return process(() -> getMapper(FastSearchTableDAO.class).list(key, status));
+        return getMapper().list(key, status);
     }
 
     /**
@@ -41,7 +41,7 @@ public class FastSearchTableDAOImpl extends BaseFrameWorkDao implements FastSear
      */
     @Override
     public boolean tryUpdateStatus(final int initiateStatus, final int status, final long id) {
-        return process(() -> getMapper(FastSearchTableDAO.class).tryUpdateStatus(initiateStatus, status, id));
+        return getMapper().tryUpdateStatus(initiateStatus, status, id);
     }
 
     /**
@@ -49,7 +49,7 @@ public class FastSearchTableDAOImpl extends BaseFrameWorkDao implements FastSear
      */
     @Override
     public boolean deleteItem(final long id) {
-        return process(() -> getMapper(FastSearchTableDAO.class).deleteItem(id));
+        return getMapper().deleteItem(id);
     }
 
     /**
@@ -57,7 +57,7 @@ public class FastSearchTableDAOImpl extends BaseFrameWorkDao implements FastSear
      */
     @Override
     public boolean deleteItemByKey(final String key) {
-        return process(() -> getMapper(FastSearchTableDAO.class).deleteItemByKey(key));
+        return getMapper().deleteItemByKey(key);
     }
 
     /**
@@ -65,7 +65,7 @@ public class FastSearchTableDAOImpl extends BaseFrameWorkDao implements FastSear
      */
     @Override
     public List<FastSearchTableItem> findItemsByStatus(final int status) {
-        return process(() -> getMapper(FastSearchTableDAO.class).findItemsByStatus(status));
+        return getMapper().findItemsByStatus(status);
     }
 
 }

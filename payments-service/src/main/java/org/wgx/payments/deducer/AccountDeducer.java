@@ -1,12 +1,12 @@
 package org.wgx.payments.deducer;
 
 import org.apache.commons.lang3.tuple.Pair;
-import org.wgx.payments.account.PaymentAccountClient;
-import org.wgx.payments.account.io.PaymentAccountRequest;
-import org.wgx.payments.account.io.PaymentAccountResponse;
 import org.wgx.payments.client.api.helper.PaymentMethod;
 import org.wgx.payments.client.api.io.Request;
 import org.wgx.payments.exception.AccountNotFoundException;
+import org.wgx.payments.virtual.account.PaymentAccountClient;
+import org.wgx.payments.virtual.account.io.PaymentAccountRequest;
+import org.wgx.payments.virtual.account.io.PaymentAccountResponse;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

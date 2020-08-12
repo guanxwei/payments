@@ -11,14 +11,14 @@ import org.wgx.payments.model.ScheduleJobRecord;
  * Mybatis based implementation of {@link ScheduleJobRecordDAO}.
  *
  */
-public class ScheduleJobRecordDAOImpl extends BaseFrameWorkDao implements ScheduleJobRecordDAO {
+public class ScheduleJobRecordDAOImpl extends BaseFrameWorkDao<ScheduleJobRecordDAO> implements ScheduleJobRecordDAO {
 
     /**
      * {@inheritDoc}
      */
     @Override
     public int save(final ScheduleJobRecord scheduleJobRecord) {
-        return process(() -> getMapper(ScheduleJobRecordDAO.class).save(scheduleJobRecord));
+        return getMapper().save(scheduleJobRecord);
     }
 
     /**
@@ -26,7 +26,7 @@ public class ScheduleJobRecordDAOImpl extends BaseFrameWorkDao implements Schedu
      */
     @Override
     public int update(final ScheduleJobRecord scheduleJobRecord) {
-        return process(() -> getMapper(ScheduleJobRecordDAO.class).update(scheduleJobRecord));
+        return getMapper().update(scheduleJobRecord);
     }
 
     /**
@@ -34,7 +34,7 @@ public class ScheduleJobRecordDAOImpl extends BaseFrameWorkDao implements Schedu
      */
     @Override
     public List<ScheduleJobRecord> getUnfinishScheduleJob(final Timestamp now) {
-        return process(() -> getMapper(ScheduleJobRecordDAO.class).getUnfinishScheduleJob(now));
+        return getMapper().getUnfinishScheduleJob(now);
     }
 
 }

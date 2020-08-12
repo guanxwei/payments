@@ -4,9 +4,9 @@ import java.sql.Timestamp;
 
 import javax.annotation.Resource;
 
+import org.stream.extension.clients.RedisClient;
 import org.wgx.payments.builder.FastSearchTableItemBuilder;
 import org.wgx.payments.client.api.io.CallbackMetaInfo;
-import org.wgx.payments.clients.RedisClient;
 import org.wgx.payments.model.FastSearchTableItem;
 import org.wgx.payments.tools.Jackson;
 

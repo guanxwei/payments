@@ -10,8 +10,14 @@
   <modules>
       <module>payments-client</module>
       <module>payments-service</module>
-      <module>payment-job</module>
       <module>payments-tools</module>
+      <module>payments-virtual</module>
+      <module>payments-gateway</module>
+      <module>payments-jumpbox</module>
+      <module>payments-dashboard</module>
+      <module>payments-customer</module>
+      <module>payments-job</module>
+      <module>payments-test</module>
   </modules>
   <properties>
       <spring.version>5.1.4.RELEASE</spring.version>
@@ -86,18 +92,58 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.wgx.payments</groupId>
-            <artifactId>payments-tools</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.8.11.1</version>
         </dependency>
         <dependency>
             <groupId>org.wgx.payments</groupId>
+            <artifactId>payments-tools</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wgx.payments</groupId>
             <artifactId>payments-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wgx.payments</groupId>
+            <artifactId>payments-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wgx.payments</groupId>
+            <artifactId>payments-virtual</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wgx.payments</groupId>
+            <artifactId>payments-gateway</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wgx.payments</groupId>
+            <artifactId>payments-jumpbox</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wgx.payments</groupId>
+            <artifactId>payments-customer</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wgx.payments</groupId>
+            <artifactId>payments-job</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wgx.payments</groupId>
+            <artifactId>payments-dashboard</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wgx.payments</groupId>
+            <artifactId>payments-customer</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -166,7 +212,6 @@
                 <version>3.8.0</version>
                 <configuration>
                     <release>11</release>
-                    
                 </configuration>
             </plugin>
             <plugin>

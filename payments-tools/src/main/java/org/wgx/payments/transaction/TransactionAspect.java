@@ -1,17 +1,18 @@
 package org.wgx.payments.transaction;
 
+import javax.annotation.Resource;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Aspect
 public class TransactionAspect {
 
-    @Setter
+    @Resource
     private TransactionManager transactionManager;
 
     @Around("@annotation(transaction)")
@@ -21,9 +22,8 @@ public class TransactionAspect {
                 transactionManager.setAutoCommit(false);
                 TransactionUtils.begin();
                 Object result = point.proceed();
-                TransactionUtils.doActions();
-
                 transactionManager.commit();
+                TransactionUtils.doActions();
                 TransactionUtils.end();
                 return result;
             } catch (Exception e) {

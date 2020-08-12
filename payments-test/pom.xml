@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.wgx.payments</groupId>
+    <artifactId>payments</artifactId>
+    <version>1.0.1</version>
+  </parent>
+  <artifactId>payments-test</artifactId>
+  <dependencies>
+    <dependency> 
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.wgx.payments</groupId>
+      <artifactId>payments-tools</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.wgx.payments</groupId>
+      <artifactId>payments-service</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.wgx.payments</groupId>
+      <artifactId>payments-virtual</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.wgx.payments</groupId>
+      <artifactId>payments-job</artifactId>
+    </dependency>    <!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb -->
+    <dependency>
+        <groupId>org.hsqldb</groupId>
+        <artifactId>hsqldb</artifactId>
+        <version>2.4.0</version>
+        <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

@@ -7,11 +7,8 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.wgx.payments.clients.RedisClient;
 
 import lombok.Data;
 
@@ -29,9 +26,6 @@ public class FlowMonitor {
     private int capacity;
     private BlockingQueue<Short> queue;
     private volatile boolean isRebooting = false;
-
-    @Resource
-    private RedisClient redisService;
 
     // 谷歌令牌桶限流，最大允许每秒50个请求
     //private static RateLimiter rateLimiter = RateLimiter.create(50);

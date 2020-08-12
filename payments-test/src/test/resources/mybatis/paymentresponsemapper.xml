@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wgx.payments.dao.PaymentResponseDAO">
+    <insert id="save" parameterType="org.wgx.payments.model.PaymentResponse">
+            insert into PaymentResponse(id, externalTransactionID, requestID, status, rawResponse, createTime, acknowledgedAmount,
+            customerID, referenceID) 
+                values (#{id}, #{externalTransactionID}, #{requestID}, #{status}, #{rawResponse}, #{createTime},
+                 #{acknowledgedAmount}, #{customerID}, #{referenceID}) 
+    </insert>
+    <update id="update" parameterType="org.wgx.payments.model.PaymentResponse">
+            update PaymentResponse set status = #{status}, lastUpdateTime = #{lastUpdateTime} where id = #{id} 
+    </update>
+    <select id="getPaymentResponseByTransactionID" resultType="org.wgx.payments.model.PaymentResponse">
+        select * from PaymentResponse where transactionID = #{arg0}
+    </select>
+    <select id="getPaymentResponseListByCustomerIDAndOperationType" resultType="org.wgx.payments.model.PaymentResponse">
+        select * from PaymentResponse where customerID = #{arg0} and operationType = #{arg1}
+    </select>
+    <select id="getPaymentResponseListByRange" resultType="org.wgx.payments.model.PaymentResponse">
+        <![CDATA[
+        select * from PaymentResponse where createTime >= #{arg0} and createTime <= #{arg1}
+        ]]>
+    </select>
+</mapper>

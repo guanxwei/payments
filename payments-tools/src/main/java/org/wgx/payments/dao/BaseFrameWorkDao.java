@@ -1,25 +1,44 @@
 package org.wgx.payments.dao;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.sql.Connection;
-import java.util.function.Supplier;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.wgx.payments.transaction.TransactionManager;
 
 import lombok.Setter;
 
-public abstract class BaseFrameWorkDao extends SqlSessionDaoSupport {
+public abstract class BaseFrameWorkDao<T> extends SqlSessionDaoSupport {
 
     private SqlSessionFactory sqlSessionFactory;
+
+    @Setter
+    private Class<T> daoInterface;
 
     protected long allocatedID(final String table) {
         return transactionManager.allocateID(table);
     }
 
-    @Setter @Autowired
+    @SuppressWarnings("unchecked")
+    public BaseFrameWorkDao() {
+        super();
+        Type type = getClass().getGenericSuperclass();
+        if (type instanceof ParameterizedType) {
+            ParameterizedType parameterizedType = (ParameterizedType) type;
+            Type actualtype = parameterizedType.getActualTypeArguments()[0];
+            String className = actualtype.getTypeName();
+            try {
+                this.daoInterface = (Class<T>) Class.forName(className);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    @Setter
     private TransactionManager transactionManager;
 
     public void setSqlSessionFactory(final SqlSessionFactory sqlSessionFactory) {
@@ -35,17 +54,7 @@ public abstract class BaseFrameWorkDao extends SqlSessionDaoSupport {
         return sqlSessionFactory.openSession();
     }
 
-    protected <T> T process(final Supplier<T> supplier) {
-        try {
-            return supplier.get();
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            close();
-        }
-    }
-
-    protected <T> T getMapper(final Class<T> daoInterface) {
+    protected T getMapper() {
         return getSession().getMapper(daoInterface);
     }
 

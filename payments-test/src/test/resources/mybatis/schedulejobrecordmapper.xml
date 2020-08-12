@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wgx.payments.dao.ScheduleJobRecordDAO">
+    <insert id="save">
+       insert into ScheduleJobRecord(id, jobID, createTime, updateTime, jobStatus, nextWorkTime, retryTimes, description, ext1, ext2) values 
+           (#{id}, #{jobID}, #{createTime}, #{updateTime}, #{jobStatus}, #{nextWorkTime}, #{retryTimes}, #{description}, #{ext1}, #{ext2})
+    </insert>
+    <update id="update" parameterType="org.wgx.payments.model.ScheduleJobRecord">
+        update ScheduleJobRecord set updateTime = #{updateTime}, jobStatus = #{jobStatus} where id = #{id}
+    </update>
+    <select id="getUnfinishScheduleJob" resultType="org.wgx.payments.model.ScheduleJobRecord">
+        <![CDATA[
+            select * from ScheduleJobRecord where (jobStatus = 'init' or jobStatus = 'process') and createTime <= #{arg0} limit 5
+        ]]>
+    </select>
+</mapper>

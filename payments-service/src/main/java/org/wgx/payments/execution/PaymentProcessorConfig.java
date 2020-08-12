@@ -5,7 +5,6 @@ import javax.annotation.Resource;
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.wgx.payments.account.PaymentAccountClient;
 import org.wgx.payments.callback.Callback;
 import org.wgx.payments.client.api.io.CreateOrUpdatePaymentResponseRequest;
 import org.wgx.payments.client.api.io.Request;
@@ -19,6 +18,7 @@ import org.wgx.payments.deducer.Deducer;
 import org.wgx.payments.facade.Facade;
 import org.wgx.payments.signature.AccountFactory;
 import org.wgx.payments.validator.Validator;
+import org.wgx.payments.virtual.account.PaymentAccountClient;
 
 /**
  * Configuration class for payment processors.

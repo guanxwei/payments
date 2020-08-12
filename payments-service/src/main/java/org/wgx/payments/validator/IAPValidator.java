@@ -3,8 +3,8 @@ package org.wgx.payments.validator;
 import javax.annotation.Resource;
 
 import org.apache.commons.lang3.tuple.Pair;
+import org.stream.extension.clients.RedisClient;
 import org.wgx.payments.client.api.io.CreateOrUpdatePaymentResponseRequest;
-import org.wgx.payments.clients.RedisClient;
 import org.wgx.payments.facade.Facade;
 import org.wgx.payments.tools.Jackson;
 import org.wgx.payments.utils.IAPConstants;

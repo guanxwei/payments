@@ -12,12 +12,12 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import javax.annotation.Resource;
 
+import org.stream.extension.clients.RedisClient;
 import org.wgx.payments.callback.Callback;
 import org.wgx.payments.callback.CallbackDetail;
 import org.wgx.payments.callback.CallbackEvent;
 import org.wgx.payments.callback.CallbackProxy;
 import org.wgx.payments.client.api.io.CallbackMetaInfo;
-import org.wgx.payments.clients.RedisClient;
 import org.wgx.payments.dao.ActionRecordDAO;
 import org.wgx.payments.model.FastSearchTableItem;
 import org.wgx.payments.tools.Jackson;

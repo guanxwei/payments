@@ -8,7 +8,7 @@ import org.wgx.payments.model.PaymentRequest;
  * Mybatis based implementation of {@linkplain PaymentRequestDAO}.
  *
  */
-public class PaymentRequestDAOImpl extends BaseFrameWorkDao implements PaymentRequestDAO {
+public class PaymentRequestDAOImpl extends BaseFrameWorkDao<PaymentRequestDAO> implements PaymentRequestDAO {
 
     private static final String TABLE = "PaymentRequest";
 
@@ -17,8 +17,7 @@ public class PaymentRequestDAOImpl extends BaseFrameWorkDao implements PaymentRe
      */
     @Override
     public int save(final PaymentRequest paymentRequest) {
-        paymentRequest.setId(allocatedID(TABLE));
-        return process(() -> getMapper(PaymentRequestDAO.class).save(paymentRequest));
+        return getMapper().save(paymentRequest);
     }
 
     /**
@@ -26,7 +25,7 @@ public class PaymentRequestDAOImpl extends BaseFrameWorkDao implements PaymentRe
      */
     @Override
     public int update(final PaymentRequest paymentRequest) {
-        return process(() -> getMapper(PaymentRequestDAO.class).update(paymentRequest));
+        return getMapper().update(paymentRequest);
     }
 
     /**
@@ -34,7 +33,7 @@ public class PaymentRequestDAOImpl extends BaseFrameWorkDao implements PaymentRe
      */
     @Override
     public PaymentRequest getPaymentRequestByID(final long id) {
-        return process(() -> getMapper(PaymentRequestDAO.class).getPaymentRequestByID(id));
+        return getMapper().getPaymentRequestByID(id);
     }
 
     /**
@@ -42,7 +41,15 @@ public class PaymentRequestDAOImpl extends BaseFrameWorkDao implements PaymentRe
      */
     @Override
     public PaymentRequest getPaymentRequestByTransactionID(String transactionID) {
-        return process(() -> getMapper(PaymentRequestDAO.class).getPaymentRequestByTransactionID(transactionID));
+        return getMapper().getPaymentRequestByTransactionID(transactionID);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public long allocateID() {
+        return super.allocatedID(TABLE);
     }
 
 }
