@@ -2,15 +2,15 @@ package org.wgx.payments.dao.impl;
 
 import org.wgx.payments.dao.BaseFrameWorkDao;
 import org.wgx.payments.dao.PaymentRequestDAO;
+import org.wgx.payments.dao.TableMapping;
 import org.wgx.payments.model.PaymentRequest;
 
 /**
  * Mybatis based implementation of {@linkplain PaymentRequestDAO}.
  *
  */
+@TableMapping(table = "PaymentRequest")
 public class PaymentRequestDAOImpl extends BaseFrameWorkDao<PaymentRequestDAO> implements PaymentRequestDAO {
-
-    private static final String TABLE = "PaymentRequest";
 
     /**
      * {@inheritDoc}
@@ -49,7 +49,7 @@ public class PaymentRequestDAOImpl extends BaseFrameWorkDao<PaymentRequestDAO> i
      */
     @Override
     public long allocateID() {
-        return super.allocatedID(TABLE);
+        return super.allocatedID();
     }
 
 }

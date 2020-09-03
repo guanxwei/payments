@@ -17,18 +17,18 @@ public class PaymentAccountScope implements Serializable {
 
     private long accountID;
 
-    // ä»¥é?—å·åˆ†éš”å¼?çš„payment operation ä»£ç ï¼? å¦? charge,refund
+    // supported payment operation.
     private String supportedOperations;
 
-    // ä»¥é?—å·åˆ†éš”å¼?çš„å¼€å¡è¡Œä»£ç å¦‚CMB,MBCCç­‰ã??
+    // issuing banks
     private String issuingBanks;
 
-    // å¼?å¡è¡Œ.
+    // issuer
     private String issuer;
 
-    // è®¾å¤‡å?
+    // device type
     private String deviceType;
 
-    // ä»¥é?—å·åˆ†éš”å¼?çš„business profiles ä»£ç ï¼? å¦? Retail,VIP
+    // supported business.
     private String supportedBusinesses;
 }

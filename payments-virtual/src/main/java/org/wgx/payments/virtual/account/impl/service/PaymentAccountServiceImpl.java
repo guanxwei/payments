@@ -94,6 +94,12 @@ public class PaymentAccountServiceImpl implements PaymentAccountService {
         if (!scope.getSupportedOperations().contains(request.getPaymentOperation())) {
             return false;
         }
+
+        if (request.getIssueingBank() != null && scope.getIssuingBanks() != null
+                && scope.getIssuingBanks().contains(request.getIssueingBank())) {
+            return false;
+        }
+
         return true;
     }
 }

@@ -6,4 +6,14 @@
     <version>1.0.1</version>
   </parent>
   <artifactId>payments-jumpbox</artifactId>
+  <dependencies>
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.wgx.payments</groupId>
+        <artifactId>payments-client</artifactId>
+    </dependency>
+  </dependencies>
 </project>

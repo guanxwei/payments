@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.wgx.payments.dao.BaseFrameWorkDao;
 import org.wgx.payments.dao.PaymentResponseDAO;
+import org.wgx.payments.dao.TableMapping;
 import org.wgx.payments.model.PaymentResponse;
 
 /**
  * Mybatis based implementation of {@linkplain PaymentResponseDAO}.
  *
  */
+@TableMapping(table = "PaymentResponse")
 public class PaymentResponseDAOImpl extends BaseFrameWorkDao<PaymentResponseDAO> implements PaymentResponseDAO {
 
     /**

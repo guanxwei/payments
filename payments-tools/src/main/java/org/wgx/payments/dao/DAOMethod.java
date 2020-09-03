@@ -8,7 +8,8 @@ import java.lang.annotation.Target;
 /**
  * Mark annotation to indicate that the method should be enhanced as dao access method.
  * {@link DAOEnhanceAdvice} will help translate the plain method into dao enhanced method,
- * which means the real action will be delegated to the mybatis proxy.
+ * which means the real action will be delegated to the mybatis proxy and db connection will be
+ * released automatically if possible(not in transaction)
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

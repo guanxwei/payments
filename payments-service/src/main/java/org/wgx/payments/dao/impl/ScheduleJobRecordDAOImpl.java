@@ -5,12 +5,14 @@ import java.util.List;
 
 import org.wgx.payments.dao.BaseFrameWorkDao;
 import org.wgx.payments.dao.ScheduleJobRecordDAO;
+import org.wgx.payments.dao.TableMapping;
 import org.wgx.payments.model.ScheduleJobRecord;
 
 /**
  * Mybatis based implementation of {@link ScheduleJobRecordDAO}.
  *
  */
+@TableMapping(table = "ScheduleJobRecord")
 public class ScheduleJobRecordDAOImpl extends BaseFrameWorkDao<ScheduleJobRecordDAO> implements ScheduleJobRecordDAO {
 
     /**

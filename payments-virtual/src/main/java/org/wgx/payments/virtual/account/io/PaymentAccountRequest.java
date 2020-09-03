@@ -13,24 +13,24 @@ public class PaymentAccountRequest implements Serializable {
 
     private static final long serialVersionUID = 428403949413094799L;
 
-    // 业务代码
+    // related business
     private String business;
 
-    // 支付方式
+    // payment method code
     private int paymentMethod;
 
-    // 设备代码
+    // device type if specified
     private String deviceType;
 
-    // 支付区域�? CN,EU�?
+    // customer region.
     private String region;
 
-    // 发卡�?, 信用卡预留， CMB�?
+    // Credit or Debit card used only indicating which bank the card is issued.
     private String issueingBank;
 
-    // 发卡组织，信用卡预留�? MasterCard�?
+    // Card issuing institution.
     private String issuer;
 
-    // 请求的支付类型，扣款，�??款等
+    // Payment operation charge auth or settle.
     private String paymentOperation;
 }
