@@ -20,7 +20,7 @@
       <module>payments-test</module>
   </modules>
   <properties>
-      <spring.version>5.1.4.RELEASE</spring.version>
+      <spring.version>5.3.19</spring.version>
       <java.version>11</java.version>
       <maven.compiler.source>${java.version}</maven.compiler.source>
       <maven.compiler.target>${java.version}</maven.compiler.target>
